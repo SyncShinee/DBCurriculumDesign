@@ -1,3 +1,4 @@
 EDM.v12.suo
-EDM/bin/Debug/*
-EDM/obj/Debug/*
+*.suo
+*.exe
+*.pdb
