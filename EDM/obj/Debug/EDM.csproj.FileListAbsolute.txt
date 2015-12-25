@@ -9,3 +9,14 @@ C:\Users\nightcool\Documents\Visual Studio 2013\Projects\DBCurriculumDesign\EDM\
 C:\Users\nightcool\Documents\Visual Studio 2013\Projects\DBCurriculumDesign\EDM\obj\Debug\EDM.csproj.GenerateResource.Cache
 C:\Users\nightcool\Documents\Visual Studio 2013\Projects\DBCurriculumDesign\EDM\obj\Debug\EDM.exe
 C:\Users\nightcool\Documents\Visual Studio 2013\Projects\DBCurriculumDesign\EDM\obj\Debug\EDM.pdb
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\bin\Debug\EDM.exe.config
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.exe
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.pdb
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\bin\Debug\EDM.exe
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\bin\Debug\EDM.pdb
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.csprojResolveAssemblyReference.cache
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.CustomerForm.resources
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.LoginForm.resources
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.ManageForm.resources
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.Properties.Resources.resources
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.csproj.GenerateResource.Cache
