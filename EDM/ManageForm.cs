@@ -51,6 +51,16 @@ namespace EDM
             if (lf.ShowDialog() == DialogResult.Yes)
             {
                 MessageBox.Show("登陆成功！\n欢迎来到本系统！");
+                if (isUser)
+                {
+                    CustomerForm cf = new CustomerForm();
+                    cf.ShowDialog();
+                }
+                else
+                {
+
+                }
+                this.Dispose();
             }
             else
             {

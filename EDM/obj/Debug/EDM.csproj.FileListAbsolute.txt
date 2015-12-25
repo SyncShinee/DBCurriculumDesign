@@ -20,3 +20,5 @@ D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.LoginForm.resour
 D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.ManageForm.resources
 D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.Properties.Resources.resources
 D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.csproj.GenerateResource.Cache
+C:\Users\nightcool\Documents\Visual Studio 2013\Projects\DBCurriculumDesign\EDM\obj\Debug\EDM.CustomerForm.resources
+C:\Users\nightcool\Documents\Visual Studio 2013\Projects\DBCurriculumDesign\EDM\obj\Debug\EDM.EmployeeForm.resources
