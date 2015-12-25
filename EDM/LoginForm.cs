@@ -37,42 +37,34 @@ namespace EDM
             }
             else
             {
-                if (ManageForm.mConn.State.ToString().Equals("Open"))
+                MySqlCommand mComd;
+                MySqlDataReader mRead;
+                mComd = new MySqlCommand( "select * from user where user_account='" + account + "';", ManageForm.mConn);
+                mRead = mComd.ExecuteReader();
+                if (!mRead.HasRows)
                 {
-                    MySqlCommand mComd;
-                    MySqlDataReader mRead;
-                    mComd = new MySqlCommand( "select * from user where username='" + account + "';", ManageForm.mConn);
-                    mRead = mComd.ExecuteReader();
-                    if (!mRead.HasRows)
+                    MessageBox.Show("用户不存在！\n登陆失败！", "提示", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                }
+                else
+                {
+                    mRead.Read();
+                    if (!mRead["user_password"].ToString().Equals(password))
                     {
-                        MessageBox.Show("用户不存在！\n登陆失败！", "提示", MessageBoxButtons.OK,
+                        MessageBox.Show("用户账号或密码错误！\n登陆失败！", "提示", MessageBoxButtons.OK,
                                         MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                     }
                     else
                     {
-                        mRead.Read();
-                        if (!mRead["user_password"].ToString().Equals(password))
-                        {
-                            MessageBox.Show("用户账号或密码错误！\n登陆失败！", "提示", MessageBoxButtons.OK,
-                                            MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                        }
-                        else
-                        {
-                            this.DialogResult = DialogResult.Yes;
-                            ManageForm.isUser = true;
-                            ManageForm.userid = mRead["id"].ToString();
-                            ManageForm.username = mRead["user_name"].ToString();
-                        }
+                        this.DialogResult = DialogResult.Yes;
+                        ManageForm.isUser = true;
+                        ManageForm.userid = mRead["user_id"].ToString();
+                        ManageForm.username = mRead["user_name"].ToString();
                     }
-                    mRead.Dispose();
-                    mComd.Dispose();
                 }
-                else
-                {
-                    MessageBox.Show("远程数据库连接失败！", "连接失败", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                }
-            }
+                mRead.Dispose();
+                mComd.Dispose();
+        }
         }
 
         private void loginBtn_Employ_Click(object sender, EventArgs e)
@@ -92,41 +84,33 @@ namespace EDM
             }
             else
             {
-                if (ManageForm.mConn.State.ToString().Equals("Open"))
+                MySqlCommand mComd;
+                MySqlDataReader mRead;
+                mComd = new MySqlCommand("select * from employee where employee_id='" + account + "';", ManageForm.mConn);
+                mRead = mComd.ExecuteReader();
+                if (!mRead.HasRows)
                 {
-                    MySqlCommand mComd;
-                    MySqlDataReader mRead;
-                    mComd = new MySqlCommand("select * from employ where username='" + account + "';", ManageForm.mConn);
-                    mRead = mComd.ExecuteReader();
-                    if (!mRead.HasRows)
+                    MessageBox.Show("员工不存在！\n登陆失败！", "提示", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                }
+                else
+                {
+                    mRead.Read();
+                    if (!mRead["password"].ToString().Equals(password))
                     {
-                        MessageBox.Show("员工不存在！\n登陆失败！", "提示", MessageBoxButtons.OK,
+                        MessageBox.Show("员工账号或密码错误！\n登陆失败！", "提示", MessageBoxButtons.OK,
                                         MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                     }
                     else
                     {
-                        mRead.Read();
-                        if (!mRead["user_password"].ToString().Equals(password))
-                        {
-                            MessageBox.Show("员工账号或密码错误！\n登陆失败！", "提示", MessageBoxButtons.OK,
-                                            MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                        }
-                        else
-                        {
-                            this.DialogResult = DialogResult.Yes;
-                            ManageForm.isUser = true;
-                            ManageForm.userid = mRead["id"].ToString();
-                            ManageForm.username = mRead["name"].ToString();
-                        }
+                        this.DialogResult = DialogResult.Yes;
+                        ManageForm.isUser = true;
+                        ManageForm.userid = mRead["employee_id"].ToString();
+                        ManageForm.username = mRead["name"].ToString();
                     }
-                    mRead.Dispose();
-                    mComd.Dispose();
                 }
-                else
-                {
-                    MessageBox.Show("远程数据库连接失败！", "连接失败", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                }
+                mRead.Dispose();
+                mComd.Dispose();
             }
         }
     }
