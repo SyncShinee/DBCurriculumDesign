@@ -14,9 +14,13 @@ namespace EDM
 {
     public partial class ManageForm : Form
     {
-        private static MySqlConnection mConn;
-        private static MySqlCommand    mComd;
-        private static MySqlDataReader mRead;
+        public static MySqlConnection mConn;
+        public static MySqlCommand    mComd;
+        public static MySqlDataReader mRead;
+
+        public static bool isUser;
+        public static String userid;
+        public static String username;
 
         public ManageForm()
         {
@@ -27,7 +31,7 @@ namespace EDM
         {
             this.Hide();
 
-            mConn = new MySqlConnection("Host = localhost;" + "Database = expressdata;" + "Username = root" + "Password = 123456");
+            mConn = new MySqlConnection("Host = localhost;" + "Database = expressdata;" + "Username = root;" + "Password = 123456");
             mConn.Open();
             
             LoginForm lf = new LoginForm();
@@ -37,7 +41,7 @@ namespace EDM
             }
             else
             {
-
+                this.Dispose();
             }
         }
     }
