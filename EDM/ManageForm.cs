@@ -58,7 +58,8 @@ namespace EDM
                 }
                 else
                 {
-
+                    EmployeeForm ef = new EmployeeForm();
+                    ef.ShowDialog();
                 }
                 this.Dispose();
             }
@@ -137,7 +138,7 @@ namespace EDM
 
             mComd = new MySqlCommand(
                 "CREATE TABLE `expressdata`.`place` (" +
-                "`place_id` INT ZEROFILL NOT NULL," +
+                "`place_id` NOT NULL AUTO_INCREMENT," +
                 "`province` VARCHAR(45) NOT NULL," +
                 "`city` VARCHAR(45) NOT NULL," +
                 "`district` VARCHAR(45) NOT NULL," +
