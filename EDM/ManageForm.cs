@@ -104,6 +104,7 @@ namespace EDM
                 "`weight` INT NOT NULL," +
                 "`type` VARCHAR(45) NOT NULL," +
                 "`orderid` INT NOT NULL," +
+                "`goods_name` VARCHAR(45) NOT NULL," +
                 "PRIMARY KEY (`goods_id`));", mConn);
             mComd.ExecuteNonQuery();
             mComd.Dispose();

@@ -39,6 +39,17 @@ namespace EDM
             }
             mRead.Dispose();
             mComd.Dispose();
+
+            if (ManageForm.userid.Equals("1")) 
+            {
+                distributeTab.Parent = tabControl1;
+                adminTab.Parent = tabControl1;
+            }
+            else
+            {
+                distributeTab.Parent = null;
+                adminTab.Parent = null;
+            }
         }
 
         private void infoUpdate_Click(object sender, EventArgs e)
@@ -49,7 +60,7 @@ namespace EDM
             int gender;
             if (name.Equals(""))
             {
-                MessageBox.Show("用户账号不能为空！", "提示", MessageBoxButtons.OK,
+                MessageBox.Show("员工姓名不能为空！", "提示", MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
             }
             else if (phone.Equals("") || phone.Length != 11)
@@ -89,6 +100,18 @@ namespace EDM
         {
             PasswordForm pf = new PasswordForm();
             pf.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AddEmployeeForm aef = new AddEmployeeForm();
+            aef.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AddPlaceForm apf = new AddPlaceForm();
+            apf.ShowDialog();
         }
     }
 }

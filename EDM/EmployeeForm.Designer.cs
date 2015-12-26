@@ -30,7 +30,10 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.taskTab = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.distributeTab = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.infoTab = new System.Windows.Forms.TabPage();
             this.maleButton = new System.Windows.Forms.RadioButton();
             this.femaleButton = new System.Windows.Forms.RadioButton();
@@ -43,21 +46,23 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.adminTab = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.welcome = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.taskTab.SuspendLayout();
             this.distributeTab.SuspendLayout();
             this.infoTab.SuspendLayout();
+            this.adminTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.taskTab);
-            this.tabControl1.Controls.Add(this.distributeTab);
             this.tabControl1.Controls.Add(this.infoTab);
+            this.tabControl1.Controls.Add(this.distributeTab);
+            this.tabControl1.Controls.Add(this.adminTab);
             this.tabControl1.Location = new System.Drawing.Point(-3, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -75,6 +80,15 @@
             this.taskTab.Text = "我的任务";
             this.taskTab.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(38, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 47);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "查询我的任务";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // distributeTab
             // 
             this.distributeTab.Controls.Add(this.button3);
@@ -85,6 +99,24 @@
             this.distributeTab.TabIndex = 2;
             this.distributeTab.Text = "分配任务";
             this.distributeTab.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(243, 21);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(118, 69);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "分配任务";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(38, 21);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 69);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "查询未分配的任务";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // infoTab
             // 
@@ -215,6 +247,37 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "姓名";
             // 
+            // adminTab
+            // 
+            this.adminTab.Controls.Add(this.button5);
+            this.adminTab.Controls.Add(this.button4);
+            this.adminTab.Location = new System.Drawing.Point(4, 28);
+            this.adminTab.Name = "adminTab";
+            this.adminTab.Size = new System.Drawing.Size(1069, 566);
+            this.adminTab.TabIndex = 3;
+            this.adminTab.Text = "公司管理";
+            this.adminTab.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(434, 143);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(150, 71);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "添加地点";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(159, 143);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(150, 71);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "增加员工";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // welcome
             // 
             this.welcome.AutoSize = true;
@@ -224,33 +287,6 @@
             this.welcome.Size = new System.Drawing.Size(103, 18);
             this.welcome.TabIndex = 2;
             this.welcome.Text = "欢迎，用户";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(38, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 47);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "查询我的任务";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(38, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 69);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "查询未分配的任务";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(243, 21);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 69);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "分配任务";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // EmployeeForm
             // 
@@ -267,6 +303,7 @@
             this.distributeTab.ResumeLayout(false);
             this.infoTab.ResumeLayout(false);
             this.infoTab.PerformLayout();
+            this.adminTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,5 +330,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabPage adminTab;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
     }
 }
