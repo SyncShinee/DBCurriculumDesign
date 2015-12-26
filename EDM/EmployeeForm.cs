@@ -16,5 +16,15 @@ namespace EDM
         {
             InitializeComponent();
         }
+
+        private void EmployeeForm_Load(object sender, EventArgs e)
+        {
+            welcome.Text = ManageForm.username;
+        }
+
+        private void username_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
