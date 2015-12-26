@@ -113,5 +113,76 @@ namespace EDM
                 mComd.Dispose();
             }
         }
+
+        private void registerButtton_Click(object sender, EventArgs e)
+        {
+            String account = accountTextR.Text;
+            String password = passwordTextR.Text;
+            String confirm = confirmText.Text;
+            String name = nameText.Text;
+            String phone = phoneText.Text;
+            String email = emailText.Text;
+            int age = 0;
+            int gender = 0;
+
+            if (account.Equals(""))
+            {
+                MessageBox.Show("用户账号不能为空！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else if (password.Equals(""))
+            {
+                MessageBox.Show("用户密码不能为空！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else if (!confirm.Equals(password))
+            {
+                MessageBox.Show("两次输入密码不一致！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else if (name.Equals(""))
+            {
+                MessageBox.Show("姓名不能为空！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else if (phone.Equals("") || phone.Length != 11)
+            {
+                MessageBox.Show("手机号码填写不正确！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else if (email.Equals("")) 
+            {
+                MessageBox.Show("联系邮箱不能为空！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else
+            {
+                try
+                {
+                    age = int.Parse(ageText.Text);
+                }
+                catch (Exception ex) {
+                    MessageBox.Show("年龄填写不正确！", "提示", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                }
+                gender = femaleButton.Checked ? 0 : 1;
+
+                MySqlCommand mComd = new MySqlCommand("select * from user where user_account='" + account + "';", ManageForm.mConn);
+                MySqlDataReader mRead = mComd.ExecuteReader();
+                if (mRead.HasRows)
+                {
+                    MessageBox.Show("该账号已经被注册！", "提示", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                }
+                else
+                {
+                    mComd = new MySqlCommand(
+                    "INSERT INTO `expressdata`.`user`" +
+                    "(`user_account`,`user_password`,`user_name`,`user_gender`,`user_age`,`user_phone`,`user_email`)" +
+                    "VALUES('" + account + "','" + password + "','" + name + "'," + gender + "," + age + ",'" + phone + "','" + email + "');", ManageForm.mConn);
+                    mComd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
