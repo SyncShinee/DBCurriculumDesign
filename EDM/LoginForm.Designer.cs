@@ -232,7 +232,7 @@
             // 
             this.ageText.Location = new System.Drawing.Point(488, 107);
             this.ageText.Name = "ageText";
-            this.ageText.Size = new System.Drawing.Size(70, 28);
+            this.ageText.Size = new System.Drawing.Size(177, 28);
             this.ageText.TabIndex = 16;
             // 
             // age

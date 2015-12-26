@@ -104,7 +104,7 @@ namespace EDM
                     else
                     {
                         this.DialogResult = DialogResult.Yes;
-                        ManageForm.isUser = true;
+                        ManageForm.isUser = false;
                         ManageForm.userid = mRead["employee_id"].ToString();
                         ManageForm.username = mRead["name"].ToString();
                     }
@@ -171,16 +171,29 @@ namespace EDM
                 MySqlDataReader mRead = mComd.ExecuteReader();
                 if (mRead.HasRows)
                 {
+                    mRead.Dispose();
                     MessageBox.Show("该账号已经被注册！", "提示", MessageBoxButtons.OK,
                                     MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 }
                 else
                 {
+                    mRead.Dispose();
                     mComd = new MySqlCommand(
                     "INSERT INTO `expressdata`.`user`" +
                     "(`user_account`,`user_password`,`user_name`,`user_gender`,`user_age`,`user_phone`,`user_email`)" +
                     "VALUES('" + account + "','" + password + "','" + name + "'," + gender + "," + age + ",'" + phone + "','" + email + "');", ManageForm.mConn);
-                    mComd.ExecuteNonQuery();
+                    try
+                    {
+                        mComd.ExecuteNonQuery();
+                        mComd.Dispose();
+                        MessageBox.Show("注册成功！", "提示", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    }
+                    catch (Exception ex) 
+                    {
+                        MessageBox.Show("注册失败！", "提示", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    }
                 }
             }
         }
