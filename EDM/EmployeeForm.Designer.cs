@@ -50,6 +50,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.welcome = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.taskTab.SuspendLayout();
             this.distributeTab.SuspendLayout();
@@ -163,7 +164,7 @@
             // 
             // buttonUpdKey
             // 
-            this.buttonUpdKey.Location = new System.Drawing.Point(634, 385);
+            this.buttonUpdKey.Location = new System.Drawing.Point(588, 304);
             this.buttonUpdKey.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUpdKey.Name = "buttonUpdKey";
             this.buttonUpdKey.Size = new System.Drawing.Size(136, 66);
@@ -174,7 +175,7 @@
             // 
             // infoUpdate
             // 
-            this.infoUpdate.Location = new System.Drawing.Point(340, 385);
+            this.infoUpdate.Location = new System.Drawing.Point(340, 304);
             this.infoUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.infoUpdate.Name = "infoUpdate";
             this.infoUpdate.Size = new System.Drawing.Size(136, 66);
@@ -204,7 +205,7 @@
             this.textBoxName.Location = new System.Drawing.Point(328, 115);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(148, 28);
+            this.textBoxName.Size = new System.Drawing.Size(168, 28);
             this.textBoxName.TabIndex = 21;
             // 
             // label7
@@ -249,6 +250,7 @@
             // 
             // adminTab
             // 
+            this.adminTab.Controls.Add(this.button6);
             this.adminTab.Controls.Add(this.button5);
             this.adminTab.Controls.Add(this.button4);
             this.adminTab.Location = new System.Drawing.Point(4, 28);
@@ -260,9 +262,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(434, 143);
+            this.button5.Location = new System.Drawing.Point(225, 24);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(150, 71);
+            this.button5.Size = new System.Drawing.Size(139, 50);
             this.button5.TabIndex = 1;
             this.button5.Text = "添加地点";
             this.button5.UseVisualStyleBackColor = true;
@@ -270,9 +272,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(159, 143);
+            this.button4.Location = new System.Drawing.Point(54, 24);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 71);
+            this.button4.Size = new System.Drawing.Size(139, 50);
             this.button4.TabIndex = 0;
             this.button4.Text = "增加员工";
             this.button4.UseVisualStyleBackColor = true;
@@ -287,6 +289,15 @@
             this.welcome.Size = new System.Drawing.Size(103, 18);
             this.welcome.TabIndex = 2;
             this.welcome.Text = "欢迎，用户";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(396, 24);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(139, 50);
+            this.button6.TabIndex = 2;
+            this.button6.Text = "查询所有员工";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // EmployeeForm
             // 
@@ -333,5 +344,6 @@
         private System.Windows.Forms.TabPage adminTab;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
     }
 }

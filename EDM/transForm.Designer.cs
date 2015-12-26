@@ -1,6 +1,6 @@
 ﻿namespace EDM
 {
-    partial class transForm
+    partial class TransForm
     {
         /// <summary>
         /// Required designer variable.

@@ -154,7 +154,7 @@ namespace EDM
                 transList.Rows[i]["endAddr"] = mdr["province"].ToString() + mdr["city"].ToString() + mdr["district"].ToString();
                 mdr.Dispose();
             }
-            transForm tf = new transForm(transList);
+            TransForm tf = new TransForm(transList);
             tf.ShowDialog();
         }
 
@@ -175,7 +175,6 @@ namespace EDM
                 source.Add(tmp);
                 mp.Add(tmp, reader["place_id"].ToString());
             }
-
             reader.Dispose();
             
             textBox1.AutoCompleteCustomSource = source;
@@ -185,10 +184,7 @@ namespace EDM
             textBox2.AutoCompleteCustomSource = source;
             textBox2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             textBox2.AutoCompleteSource = AutoCompleteSource.CustomSource;
-        }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -279,6 +275,17 @@ namespace EDM
 
                 }
             }
+        }
+
+        private void buttonUpdKey_Click(object sender, EventArgs e)
+        {
+            PasswordForm pf = new PasswordForm();
+            pf.ShowDialog();
+        }
+
+        private void infoUpdate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

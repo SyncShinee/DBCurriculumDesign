@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace EDM
 {
-    public partial class transForm : Form
+    public partial class TransForm : Form
     {
         private DataTable dt;
-        public transForm(DataTable _dt)
+        public TransForm(DataTable _dt)
         {
             dt = _dt;
             InitializeComponent();
@@ -48,7 +48,7 @@ namespace EDM
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //todo return
+            this.Dispose();
         }
     }
 }

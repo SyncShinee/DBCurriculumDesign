@@ -53,7 +53,7 @@ namespace EDM
             MySqlCommand mComd = new MySqlCommand(
                 "INSERT INTO `expressdata`.`place`" +
                 "(`province`,`city`,`district`,`level`)" +
-                "VALUES('" + province + "','" + city + "','" + district + "');", ManageForm.mConn);
+                "VALUES('" + province + "','" + city + "','" + district + "'," + level + ");", ManageForm.mConn);
             mComd.ExecuteNonQuery();
             mComd.Dispose();
             MessageBox.Show("增加新地点成功！", "提示", MessageBoxButtons.OK,

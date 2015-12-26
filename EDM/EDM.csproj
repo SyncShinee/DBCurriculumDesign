@@ -95,11 +95,11 @@
     <EmbeddedResource Include="AddPlaceForm.resx">
       <DependentUpon>AddPlaceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="transForm.cs">
+    <Compile Include="TransForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="transForm.Designer.cs">
-      <DependentUpon>transForm.cs</DependentUpon>
+    <Compile Include="TransForm.Designer.cs">
+      <DependentUpon>TransForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
@@ -125,8 +125,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="transForm.resx">
-      <DependentUpon>transForm.cs</DependentUpon>
+    <EmbeddedResource Include="TransForm.resx">
+      <DependentUpon>TransForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
