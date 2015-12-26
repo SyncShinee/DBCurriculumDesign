@@ -27,28 +27,142 @@ namespace EDM
         private void button1_Click(object sender, EventArgs e)
         {
             MySqlCommand mComd;
-            mComd = new MySqlCommand("select * from expressdata.order where userid='" + ManageForm.userid + "';", ManageForm.mConn);
-            MySqlDataAdapter da = new MySqlDataAdapter(mComd);
+            mComd = new MySqlCommand("select order_id as 订单号,userid as 发货人,startplace as 发货地点, endplace as 收货地点, order_state as 订单状态, order_time as 下单时间 from `expressdata`.`order` where userid = " + ManageForm.userid +　";", ManageForm.mConn);
+            MySqlDataAdapter da = new MySqlDataAdapter();
+            da.SelectCommand = mComd;
             DataSet ds = new DataSet();
-            da.Fill(ds, "order");
-            dataGridView1.DataSource = ds;
+            int num = da.Fill(ds, "order");
             mComd.Dispose();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("订单号");
+            dt.Columns.Add("发货人");
+            dt.Columns.Add("发货地点");
+            dt.Columns.Add("收货地点");
+            dt.Columns.Add("订单状态");
+            dt.Columns.Add("下单时间");
+            for (int i = 0; i < num; ++i)
+            {
+                MySqlCommand mCmd;
+                MySqlDataReader mrd;
+                
+                mCmd = new MySqlCommand("select user_name from expressdata.user where user_id = " + ManageForm.userid + ";", ManageForm.mConn);
+                String stmp = mCmd.ExecuteScalar().ToString();
+                DataRow dr = dt.NewRow();
+                dr["订单号"] = ds.Tables["order"].Rows[i]["订单号"].ToString();
+                dr["发货人"] = stmp;
+                mCmd.Dispose();
+               
+                mCmd = new MySqlCommand("select province, city, district from expressdata.place where place_id = " + ds.Tables["order"].Rows[i]["发货地点"].ToString() + ";", ManageForm.mConn);
+                mrd = mCmd.ExecuteReader();
+                mrd.Read();
+                dr["发货地点"] = mrd["province"].ToString() + mrd["city"].ToString() + mrd["district"].ToString();
+                mrd.Dispose();
+
+                mCmd = new MySqlCommand("select province, city, district from expressdata.place where place_id = " + ds.Tables["order"].Rows[i]["收货地点"].ToString() + ";", ManageForm.mConn);
+                mrd = mCmd.ExecuteReader();
+                mrd.Read();
+                dr["收货地点"] = mrd["province"].ToString() + mrd["city"].ToString() + mrd["district"].ToString();
+                mrd.Dispose();
+
+                dr["订单状态"] = ds.Tables["order"].Rows[i]["订单状态"].ToString() == "0" ? "未配送" : ds.Tables["order"].Rows[i]["订单状态"].ToString() == "1" ? "正在配送" : "已送达";
+                dr["下单时间"] = ds.Tables["order"].Rows[i]["下单时间"].ToString();
+
+                dt.Rows.Add(dr);
+            }
+            dataGridView1.DataSource = dt;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             String orderid = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             MySqlCommand mComd;
+            MySqlDataReader mRed;
             //todo
-            mComd = new MySqlCommand("select * from order, ", ManageForm.mConn);
+            mComd = new MySqlCommand("select goods_id, goods_name from expressdata.goods where orderid = " + orderid + ";", ManageForm.mConn);
+            mRed = mComd.ExecuteReader();
+            DataTable goodsList = new DataTable();
+            goodsList.Columns.Add("goodsName");
+            goodsList.Columns.Add("goodsid");
+            DataTable transList = new DataTable();
+            transList.Columns.Add("transid");
+            transList.Columns.Add("goods");
+            transList.Columns.Add("startAddrid");
+            transList.Columns.Add("endAddrid");
+            transList.Columns.Add("startAddr");
+            transList.Columns.Add("endAddr");
+            transList.Columns.Add("startTime");
+            transList.Columns.Add("endTime");
+            transList.Columns.Add("chargerid");
+            transList.Columns.Add("charger");
+            transList.Columns.Add("chargePhone");
+            while (mRed.Read())
+            {
+                DataRow dr = goodsList.NewRow();
+                dr["goodsname"] = mRed["goods_name"].ToString();
+                dr["goodsid"] = mRed["goods_id"].ToString();
+                goodsList.Rows.Add(dr);
+            }
+            mRed.Dispose();
 
+            for (int i = 0; i < goodsList.Rows.Count; ++i)
+            {
+                MySqlCommand mCmd = new MySqlCommand("select transport_id from expressdata.transport_goods where goods_id = " + goodsList.Rows[i]["goodsid"] + ";", ManageForm.mConn);
+                MySqlDataReader mdr = mCmd.ExecuteReader();
+                while (mdr.Read())
+                {
+                    DataRow dr = transList.NewRow();
+                    dr["goods"] = goodsList.Rows[i]["goodsName"];
+                    dr["transid"] = mdr["transport_id"];
+                    transList.Rows.Add(dr);
+                }
+                mdr.Dispose();
+            }
+            for (int i = 0; i < transList.Rows.Count; ++ i)
+            {
+                MySqlCommand mCmd = new MySqlCommand("select * from expressdata.transport where transport_id = " + transList.Rows[i]["transid"] + ";", ManageForm.mConn);
+                MySqlDataReader mdr = mCmd.ExecuteReader();
+                mdr.Read();
+                transList.Rows[i]["startAddrid"] = mdr["startplace"];
+                transList.Rows[i]["endAddrid"] = mdr["endplace"];
+                transList.Rows[i]["startTime"] = mdr["starttime"];
+                transList.Rows[i]["endTime"] = mdr["endtime"];
+                transList.Rows[i]["chargerid"] = mdr["person_id"];
+                mdr.Dispose();
+            }
+            for (int i = 0; i < transList.Rows.Count; ++i)
+            {
+                MySqlCommand mCmd = new MySqlCommand("select name, phone from expressdata.employee where employee_id = " + transList.Rows[i]["chargerid"] + ";", ManageForm.mConn);
+                MySqlDataReader mdr = mCmd.ExecuteReader();
+                mdr.Read();
+                transList.Rows[i]["charger"] = mdr["name"];
+                transList.Rows[i]["chargePhone"] = mdr["phone"];
+                mdr.Dispose();
+            }
+            for (int i = 0; i < transList.Rows.Count; ++i)
+            {
+                MySqlCommand mCmd = new MySqlCommand("select * from expressdata.place where place_id = " + transList.Rows[i]["startAddrid"] + ";", ManageForm.mConn);
+                MySqlDataReader mdr = mCmd.ExecuteReader();
+                mdr.Read();
+                transList.Rows[i]["startAddr"] = mdr["province"].ToString() + mdr["city"].ToString() + mdr["district"].ToString();
+                mdr.Dispose();
+            }
+            for (int i = 0; i < transList.Rows.Count; ++i)
+            {
+                MySqlCommand mCmd = new MySqlCommand("select * from expressdata.place where place_id = " + transList.Rows[i]["endAddrid"] + ";", ManageForm.mConn);
+                MySqlDataReader mdr = mCmd.ExecuteReader();
+                mdr.Read();
+                transList.Rows[i]["endAddr"] = mdr["province"].ToString() + mdr["city"].ToString() + mdr["district"].ToString();
+                mdr.Dispose();
+            }
+            transForm tf = new transForm(transList);
+            tf.ShowDialog();
         }
 
         private void CustomerForm_Load(object sender, EventArgs e)
         {
             dataGridView1.ReadOnly = true;
 
-
+            label_user.Text = "欢迎, " + ManageForm.username;
             MySqlCommand mComd;
             MySqlDataReader reader;
             mComd = new MySqlCommand("select * from place", ManageForm.mConn);
@@ -92,8 +206,78 @@ namespace EDM
             }
             else
             {
-                int tx = 0, ty = 0;
-                
+                bool flag = true;
+                for (int i = 0; i < dataGridView2.RowCount - 1; ++i)
+                {
+                    for (int j = 0; j < 3; ++j)
+                    {
+                        dataGridView2.CurrentCell = dataGridView2[j, i];
+                        if (dataGridView2.CurrentCell.Value == null)
+                        {
+                            flag = false;
+                            MessageBox.Show("货物信息填写不完整！");
+                            break;
+                        }
+                    }
+                    if (!flag)
+                    {
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    String orderIns =
+                        "INSERT INTO `expressdata`.`order`" +
+                        "(" +
+                        "`userid`," +
+                        "`startplace`," +
+                        "`endplace`," +
+                        "`order_state`," +
+                        "`order_time`)" +
+                        "VALUES" +
+                        "(" +
+                        ManageForm.userid + "," +
+                        mp[startAddr] + "," +
+                        mp[endAddr] + "," +
+                        "0" + ",'" +
+                        DateTime.Now.ToString() + "');select @@Identity";
+                    MySqlCommand Mcomd = new MySqlCommand(orderIns, ManageForm.mConn);
+                    String order_id = Mcomd.ExecuteScalar().ToString();
+                    Mcomd.Dispose();
+
+                    for (int i = 0; i < dataGridView2.RowCount - 1; ++i)
+                    {
+                        String goods_name, goods_weight, goods_type;
+                        dataGridView2.CurrentCell = dataGridView2[0, i];
+                        goods_name = dataGridView2.CurrentCell.Value.ToString();
+                        dataGridView2.CurrentCell = dataGridView2[1, i];
+                        goods_type = dataGridView2.CurrentCell.Value.ToString();
+                        dataGridView2.CurrentCell = dataGridView2[2, i];
+                        goods_weight = dataGridView2.CurrentCell.Value.ToString();
+                        String goods_ins = 
+                            "INSERT INTO `expressdata`.`goods`" +
+                            "(" +
+                            "`weight`," +
+                            "`type`," +
+                            "`orderid`," +
+                            "`goods_name`)" +
+                            "VALUES" +
+                            "(" +
+                            goods_weight + ",'" +
+                            goods_type + "'," +
+                            order_id + ",'" +
+                            goods_name + "');";
+                        //MessageBox.Show(goods_ins);
+                        Mcomd = new MySqlCommand(goods_ins, ManageForm.mConn);
+                        Mcomd.ExecuteNonQuery();
+                        Mcomd.Dispose();
+                    }
+                    dataGridView2.Rows.Clear();
+                    textBox1.Clear();
+                    textBox2.Clear();
+                    MessageBox.Show("下单成功，请等待配送员配送。");
+
+                }
             }
         }
     }
