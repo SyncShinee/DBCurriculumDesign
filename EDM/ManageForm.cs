@@ -77,8 +77,8 @@ namespace EDM
                 "`user_account` VARCHAR(45) NOT NULL," +
                 "`user_password` VARCHAR(45) NOT NULL," +
                 "`user_name` VARCHAR(45) NOT NULL," +
-                "`user_gender` TINYINT(1) ZEROFILL NOT NULL," +
-                "`user_age` INT ZEROFILL NOT NULL," +
+                "`user_gender` TINYINT(1) NOT NULL," +
+                "`user_age` INT NOT NULL," +
                 "`user_phone` VARCHAR(20) NOT NULL," +
                 "`user_email` VARCHAR(45) NOT NULL," +
                 "PRIMARY KEY (`user_id`)," +
@@ -127,7 +127,7 @@ namespace EDM
                 "`employee_id` INT NOT NULL AUTO_INCREMENT," +
                 "`password` VARCHAR(45) NOT NULL," +
                 "`name` VARCHAR(45) NOT NULL," +
-                "`gender` TINYINT(1) ZEROFILL NOT NULL," +
+                "`gender` TINYINT(1) NOT NULL," +
                 "`age` INT NOT NULL," +
                 "`phone` VARCHAR(20) NOT NULL," +
                 "`worktime` INT NOT NULL," +

@@ -42,24 +42,24 @@
             this.account2 = new System.Windows.Forms.Label();
             this.accountTextE = new System.Windows.Forms.TextBox();
             this.registerTab = new System.Windows.Forms.TabPage();
+            this.registerButtton = new System.Windows.Forms.Button();
+            this.ageText = new System.Windows.Forms.TextBox();
+            this.age = new System.Windows.Forms.Label();
+            this.emailText = new System.Windows.Forms.TextBox();
+            this.email = new System.Windows.Forms.Label();
+            this.phoneText = new System.Windows.Forms.TextBox();
+            this.phone = new System.Windows.Forms.Label();
+            this.gender = new System.Windows.Forms.Label();
+            this.maleButton = new System.Windows.Forms.RadioButton();
+            this.femaleButton = new System.Windows.Forms.RadioButton();
+            this.nameText = new System.Windows.Forms.TextBox();
+            this.name = new System.Windows.Forms.Label();
+            this.confirmText = new System.Windows.Forms.TextBox();
             this.confirm = new System.Windows.Forms.Label();
             this.passwordTextR = new System.Windows.Forms.TextBox();
             this.password3 = new System.Windows.Forms.Label();
             this.accountTextR = new System.Windows.Forms.TextBox();
             this.account3 = new System.Windows.Forms.Label();
-            this.confirmText = new System.Windows.Forms.TextBox();
-            this.name = new System.Windows.Forms.Label();
-            this.nameText = new System.Windows.Forms.TextBox();
-            this.femaleButton = new System.Windows.Forms.RadioButton();
-            this.maleButton = new System.Windows.Forms.RadioButton();
-            this.gender = new System.Windows.Forms.Label();
-            this.phone = new System.Windows.Forms.Label();
-            this.phoneText = new System.Windows.Forms.TextBox();
-            this.email = new System.Windows.Forms.Label();
-            this.emailText = new System.Windows.Forms.TextBox();
-            this.age = new System.Windows.Forms.Label();
-            this.ageText = new System.Windows.Forms.TextBox();
-            this.registerButtton = new System.Windows.Forms.Button();
             this.loginTab.SuspendLayout();
             this.userTab.SuspendLayout();
             this.empolyTab.SuspendLayout();
@@ -71,10 +71,10 @@
             this.loginTab.Controls.Add(this.userTab);
             this.loginTab.Controls.Add(this.empolyTab);
             this.loginTab.Controls.Add(this.registerTab);
-            this.loginTab.Location = new System.Drawing.Point(12, 12);
+            this.loginTab.Location = new System.Drawing.Point(0, 3);
             this.loginTab.Name = "loginTab";
             this.loginTab.SelectedIndex = 0;
-            this.loginTab.Size = new System.Drawing.Size(732, 514);
+            this.loginTab.Size = new System.Drawing.Size(753, 529);
             this.loginTab.TabIndex = 0;
             // 
             // userTab
@@ -88,7 +88,7 @@
             this.userTab.Location = new System.Drawing.Point(4, 28);
             this.userTab.Name = "userTab";
             this.userTab.Padding = new System.Windows.Forms.Padding(3);
-            this.userTab.Size = new System.Drawing.Size(724, 482);
+            this.userTab.Size = new System.Drawing.Size(745, 497);
             this.userTab.TabIndex = 0;
             this.userTab.Text = "用户登录";
             // 
@@ -144,7 +144,7 @@
             this.empolyTab.Location = new System.Drawing.Point(4, 28);
             this.empolyTab.Name = "empolyTab";
             this.empolyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.empolyTab.Size = new System.Drawing.Size(724, 482);
+            this.empolyTab.Size = new System.Drawing.Size(745, 497);
             this.empolyTab.TabIndex = 1;
             this.empolyTab.Text = "员工登陆";
             this.empolyTab.UseVisualStyleBackColor = true;
@@ -213,10 +213,122 @@
             this.registerTab.Controls.Add(this.account3);
             this.registerTab.Location = new System.Drawing.Point(4, 28);
             this.registerTab.Name = "registerTab";
-            this.registerTab.Size = new System.Drawing.Size(724, 482);
+            this.registerTab.Size = new System.Drawing.Size(745, 497);
             this.registerTab.TabIndex = 2;
             this.registerTab.Text = "用户注册";
             this.registerTab.UseVisualStyleBackColor = true;
+            // 
+            // registerButtton
+            // 
+            this.registerButtton.Location = new System.Drawing.Point(304, 334);
+            this.registerButtton.Name = "registerButtton";
+            this.registerButtton.Size = new System.Drawing.Size(107, 54);
+            this.registerButtton.TabIndex = 17;
+            this.registerButtton.Text = "注册";
+            this.registerButtton.UseVisualStyleBackColor = true;
+            this.registerButtton.Click += new System.EventHandler(this.registerButtton_Click);
+            // 
+            // ageText
+            // 
+            this.ageText.Location = new System.Drawing.Point(488, 107);
+            this.ageText.Name = "ageText";
+            this.ageText.Size = new System.Drawing.Size(177, 28);
+            this.ageText.TabIndex = 16;
+            // 
+            // age
+            // 
+            this.age.AutoSize = true;
+            this.age.Location = new System.Drawing.Point(412, 110);
+            this.age.Name = "age";
+            this.age.Size = new System.Drawing.Size(44, 18);
+            this.age.TabIndex = 15;
+            this.age.Text = "年龄";
+            // 
+            // emailText
+            // 
+            this.emailText.Location = new System.Drawing.Point(488, 230);
+            this.emailText.Name = "emailText";
+            this.emailText.Size = new System.Drawing.Size(177, 28);
+            this.emailText.TabIndex = 14;
+            // 
+            // email
+            // 
+            this.email.AutoSize = true;
+            this.email.Location = new System.Drawing.Point(376, 233);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(80, 18);
+            this.email.TabIndex = 13;
+            this.email.Text = "联系邮箱";
+            // 
+            // phoneText
+            // 
+            this.phoneText.Location = new System.Drawing.Point(164, 227);
+            this.phoneText.Name = "phoneText";
+            this.phoneText.Size = new System.Drawing.Size(177, 28);
+            this.phoneText.TabIndex = 12;
+            // 
+            // phone
+            // 
+            this.phone.AutoSize = true;
+            this.phone.Location = new System.Drawing.Point(52, 230);
+            this.phone.Name = "phone";
+            this.phone.Size = new System.Drawing.Size(80, 18);
+            this.phone.TabIndex = 11;
+            this.phone.Text = "手机号码";
+            // 
+            // gender
+            // 
+            this.gender.AutoSize = true;
+            this.gender.Location = new System.Drawing.Point(412, 172);
+            this.gender.Name = "gender";
+            this.gender.Size = new System.Drawing.Size(44, 18);
+            this.gender.TabIndex = 10;
+            this.gender.Text = "性别";
+            // 
+            // maleButton
+            // 
+            this.maleButton.AutoSize = true;
+            this.maleButton.Location = new System.Drawing.Point(566, 170);
+            this.maleButton.Name = "maleButton";
+            this.maleButton.Size = new System.Drawing.Size(51, 22);
+            this.maleButton.TabIndex = 9;
+            this.maleButton.Text = "男";
+            this.maleButton.UseVisualStyleBackColor = true;
+            // 
+            // femaleButton
+            // 
+            this.femaleButton.AutoSize = true;
+            this.femaleButton.Checked = true;
+            this.femaleButton.Location = new System.Drawing.Point(493, 170);
+            this.femaleButton.Name = "femaleButton";
+            this.femaleButton.Size = new System.Drawing.Size(51, 22);
+            this.femaleButton.TabIndex = 8;
+            this.femaleButton.TabStop = true;
+            this.femaleButton.Text = "女";
+            this.femaleButton.UseVisualStyleBackColor = true;
+            // 
+            // nameText
+            // 
+            this.nameText.Location = new System.Drawing.Point(488, 45);
+            this.nameText.Name = "nameText";
+            this.nameText.Size = new System.Drawing.Size(177, 28);
+            this.nameText.TabIndex = 7;
+            // 
+            // name
+            // 
+            this.name.AutoSize = true;
+            this.name.Location = new System.Drawing.Point(412, 48);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(44, 18);
+            this.name.TabIndex = 6;
+            this.name.Text = "姓名";
+            // 
+            // confirmText
+            // 
+            this.confirmText.Location = new System.Drawing.Point(164, 164);
+            this.confirmText.Name = "confirmText";
+            this.confirmText.Size = new System.Drawing.Size(177, 28);
+            this.confirmText.TabIndex = 5;
             // 
             // confirm
             // 
@@ -258,118 +370,6 @@
             this.account3.Size = new System.Drawing.Size(80, 18);
             this.account3.TabIndex = 0;
             this.account3.Text = "用户账号";
-            // 
-            // confirmText
-            // 
-            this.confirmText.Location = new System.Drawing.Point(164, 164);
-            this.confirmText.Name = "confirmText";
-            this.confirmText.Size = new System.Drawing.Size(177, 28);
-            this.confirmText.TabIndex = 5;
-            // 
-            // name
-            // 
-            this.name.AutoSize = true;
-            this.name.Location = new System.Drawing.Point(88, 229);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(44, 18);
-            this.name.TabIndex = 6;
-            this.name.Text = "姓名";
-            // 
-            // nameText
-            // 
-            this.nameText.Location = new System.Drawing.Point(164, 226);
-            this.nameText.Name = "nameText";
-            this.nameText.Size = new System.Drawing.Size(177, 28);
-            this.nameText.TabIndex = 7;
-            // 
-            // femaleButton
-            // 
-            this.femaleButton.AutoSize = true;
-            this.femaleButton.Checked = true;
-            this.femaleButton.Location = new System.Drawing.Point(164, 288);
-            this.femaleButton.Name = "femaleButton";
-            this.femaleButton.Size = new System.Drawing.Size(51, 22);
-            this.femaleButton.TabIndex = 8;
-            this.femaleButton.TabStop = true;
-            this.femaleButton.Text = "女";
-            this.femaleButton.UseVisualStyleBackColor = true;
-            // 
-            // maleButton
-            // 
-            this.maleButton.AutoSize = true;
-            this.maleButton.Location = new System.Drawing.Point(237, 288);
-            this.maleButton.Name = "maleButton";
-            this.maleButton.Size = new System.Drawing.Size(51, 22);
-            this.maleButton.TabIndex = 9;
-            this.maleButton.Text = "男";
-            this.maleButton.UseVisualStyleBackColor = true;
-            // 
-            // gender
-            // 
-            this.gender.AutoSize = true;
-            this.gender.Location = new System.Drawing.Point(88, 290);
-            this.gender.Name = "gender";
-            this.gender.Size = new System.Drawing.Size(44, 18);
-            this.gender.TabIndex = 10;
-            this.gender.Text = "性别";
-            // 
-            // phone
-            // 
-            this.phone.AutoSize = true;
-            this.phone.Location = new System.Drawing.Point(387, 45);
-            this.phone.Name = "phone";
-            this.phone.Size = new System.Drawing.Size(80, 18);
-            this.phone.TabIndex = 11;
-            this.phone.Text = "手机号码";
-            // 
-            // phoneText
-            // 
-            this.phoneText.Location = new System.Drawing.Point(499, 42);
-            this.phoneText.Name = "phoneText";
-            this.phoneText.Size = new System.Drawing.Size(177, 28);
-            this.phoneText.TabIndex = 12;
-            // 
-            // email
-            // 
-            this.email.AutoSize = true;
-            this.email.Location = new System.Drawing.Point(387, 102);
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(80, 18);
-            this.email.TabIndex = 13;
-            this.email.Text = "联系邮箱";
-            // 
-            // emailText
-            // 
-            this.emailText.Location = new System.Drawing.Point(499, 99);
-            this.emailText.Name = "emailText";
-            this.emailText.Size = new System.Drawing.Size(177, 28);
-            this.emailText.TabIndex = 14;
-            // 
-            // age
-            // 
-            this.age.AutoSize = true;
-            this.age.Location = new System.Drawing.Point(423, 229);
-            this.age.Name = "age";
-            this.age.Size = new System.Drawing.Size(44, 18);
-            this.age.TabIndex = 15;
-            this.age.Text = "年龄";
-            // 
-            // ageText
-            // 
-            this.ageText.Location = new System.Drawing.Point(499, 226);
-            this.ageText.Name = "ageText";
-            this.ageText.Size = new System.Drawing.Size(70, 28);
-            this.ageText.TabIndex = 16;
-            // 
-            // registerButtton
-            // 
-            this.registerButtton.Location = new System.Drawing.Point(307, 353);
-            this.registerButtton.Name = "registerButtton";
-            this.registerButtton.Size = new System.Drawing.Size(107, 54);
-            this.registerButtton.TabIndex = 17;
-            this.registerButtton.Text = "注册";
-            this.registerButtton.UseVisualStyleBackColor = true;
-            this.registerButtton.Click += new System.EventHandler(this.registerButtton_Click);
             // 
             // LoginForm
             // 
