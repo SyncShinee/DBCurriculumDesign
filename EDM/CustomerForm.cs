@@ -248,14 +248,15 @@ namespace EDM
                         "`startplace`," +
                         "`endplace`," +
                         "`order_state`," +
-                        "`order_time`)" +
+                        "`order_time`,`order_count`)" +
                         "VALUES" +
                         "(" +
                         ManageForm.userid + "," +
                         mp[startAddr] + "," +
                         mp[endAddr] + "," +
                         "0" + ",'" +
-                        DateTime.Now.ToString() + "');select @@Identity";
+                        DateTime.Now.ToString() + 
+                        "',0);select @@Identity";
                     MySqlCommand Mcomd = new MySqlCommand(orderIns, ManageForm.mConn);
                     String order_id = Mcomd.ExecuteScalar().ToString();
                     Mcomd.Dispose();

@@ -26,6 +26,11 @@ namespace EDM
         {
             welcome.Text = "欢迎，" + ManageForm.username;
 
+            dataGridViewEmployee.ReadOnly = true;
+            dataGridViewFinish.ReadOnly = true;
+            dataGridViewOrder.ReadOnly = true;
+            dataGridViewToDo.ReadOnly = true;
+
             MySqlCommand mComd = new MySqlCommand("select * from employee where employee_id=" + ManageForm.userid + ";", ManageForm.mConn);
             MySqlDataReader mRead = mComd.ExecuteReader();
             mRead.Read();
@@ -188,7 +193,7 @@ namespace EDM
                 MySqlCommand mc = new MySqlCommand("select * from expressdata.transport where transport_id = " + dt_tot.Rows[i]["transid"] + ";", ManageForm.mConn);
                 MySqlDataReader mdr = mc.ExecuteReader();
                 mdr.Read();
-                if (mdr["endtime"].ToString() == "1000-01-01 00:00:00")
+                if ("1000/1/1 0:00:00".Equals(mdr["endtime"].ToString()))
                 {
                     DataRow dar = dt_todo.NewRow();
                     dar["配送任务流水号"] = mdr["transport_id"];
@@ -216,8 +221,8 @@ namespace EDM
                 }
                 mdr.Dispose();
             }
-            dataGridViewFinish.DataSource = dt_finish;
             dataGridViewToDo.DataSource = dt_todo;
+            dataGridViewFinish.DataSource = dt_finish;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -380,5 +385,39 @@ namespace EDM
             }
             MessageBox.Show("配送任务分配成功！");
         }
+
+        private void dataGridViewToDo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            String transid = dataGridViewToDo.CurrentRow.Cells[0].Value.ToString();
+            String transstarttime = dataGridViewToDo.CurrentRow.Cells[5].Value.ToString();
+            String transendtime = dataGridViewToDo.CurrentRow.Cells[6].Value.ToString();
+            String charger = dataGridViewToDo.CurrentRow.Cells[7].Value.ToString();
+            //MessageBox.Show(transid + transstarttime + transendtime + charger);
+            if (transstarttime == "1000/1/1 0:00:00")
+            {
+                if (charger == ManageForm.userid)
+                {
+                    StartTransForm stf = new StartTransForm(transid);
+                    stf.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("您不是该项配送任务的负责人，请等待负责人修改任务状态！");
+                }
+            }
+            else if (transendtime == "1000/1/1 0:00:00")
+            {
+                if (charger == ManageForm.userid)
+                {
+                    EndTransForm etf = new EndTransForm(transid);
+                    etf.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("您不是该项配送任务的负责人，请等待负责人修改任务状态！");
+                }
+            }
+        }
+
     }
 }

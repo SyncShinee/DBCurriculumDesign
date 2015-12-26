@@ -30,9 +30,10 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.taskTab = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewFinish = new System.Windows.Forms.DataGridView();
             this.dataGridViewToDo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewFinish = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.infoTab = new System.Windows.Forms.TabPage();
             this.maleButton = new System.Windows.Forms.RadioButton();
@@ -47,24 +48,23 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.distributeTab = new System.Windows.Forms.TabPage();
+            this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.adminTab = new System.Windows.Forms.TabPage();
+            this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.welcome = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
-            this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.taskTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinish)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinish)).BeginInit();
             this.infoTab.SuspendLayout();
             this.distributeTab.SuspendLayout();
-            this.adminTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
+            this.adminTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,8 +85,8 @@
             // 
             this.taskTab.Controls.Add(this.label2);
             this.taskTab.Controls.Add(this.label1);
-            this.taskTab.Controls.Add(this.dataGridViewFinish);
             this.taskTab.Controls.Add(this.dataGridViewToDo);
+            this.taskTab.Controls.Add(this.dataGridViewFinish);
             this.taskTab.Controls.Add(this.button1);
             this.taskTab.Location = new System.Drawing.Point(4, 22);
             this.taskTab.Margin = new System.Windows.Forms.Padding(2);
@@ -97,6 +97,15 @@
             this.taskTab.Text = "我的任务";
             this.taskTab.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(366, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 12);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "已完成的配送任务";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -106,25 +115,26 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "待完成的配送任务";
             // 
-            // dataGridViewFinish
-            // 
-            this.dataGridViewFinish.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridViewFinish.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFinish.Location = new System.Drawing.Point(22, 88);
-            this.dataGridViewFinish.Name = "dataGridViewFinish";
-            this.dataGridViewFinish.RowTemplate.Height = 23;
-            this.dataGridViewFinish.Size = new System.Drawing.Size(317, 236);
-            this.dataGridViewFinish.TabIndex = 2;
-            // 
             // dataGridViewToDo
             // 
             this.dataGridViewToDo.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewToDo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewToDo.Location = new System.Drawing.Point(368, 88);
+            this.dataGridViewToDo.Location = new System.Drawing.Point(22, 88);
             this.dataGridViewToDo.Name = "dataGridViewToDo";
             this.dataGridViewToDo.RowTemplate.Height = 23;
             this.dataGridViewToDo.Size = new System.Drawing.Size(317, 236);
-            this.dataGridViewToDo.TabIndex = 1;
+            this.dataGridViewToDo.TabIndex = 2;
+            this.dataGridViewToDo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToDo_CellClick);
+            // 
+            // dataGridViewFinish
+            // 
+            this.dataGridViewFinish.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridViewFinish.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFinish.Location = new System.Drawing.Point(368, 88);
+            this.dataGridViewFinish.Name = "dataGridViewFinish";
+            this.dataGridViewFinish.RowTemplate.Height = 23;
+            this.dataGridViewFinish.Size = new System.Drawing.Size(317, 236);
+            this.dataGridViewFinish.TabIndex = 1;
             // 
             // button1
             // 
@@ -273,6 +283,16 @@
             this.distributeTab.Text = "分配任务";
             this.distributeTab.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewOrder
+            // 
+            this.dataGridViewOrder.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrder.Location = new System.Drawing.Point(29, 77);
+            this.dataGridViewOrder.Name = "dataGridViewOrder";
+            this.dataGridViewOrder.RowTemplate.Height = 23;
+            this.dataGridViewOrder.Size = new System.Drawing.Size(638, 244);
+            this.dataGridViewOrder.TabIndex = 3;
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(162, 14);
@@ -308,6 +328,16 @@
             this.adminTab.TabIndex = 3;
             this.adminTab.Text = "公司管理";
             this.adminTab.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewEmployee
+            // 
+            this.dataGridViewEmployee.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(36, 65);
+            this.dataGridViewEmployee.Name = "dataGridViewEmployee";
+            this.dataGridViewEmployee.RowTemplate.Height = 23;
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(632, 262);
+            this.dataGridViewEmployee.TabIndex = 3;
             // 
             // button6
             // 
@@ -353,35 +383,6 @@
             this.welcome.TabIndex = 2;
             this.welcome.Text = "欢迎，用户";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(366, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "已完成的配送任务";
-            // 
-            // dataGridViewOrder
-            // 
-            this.dataGridViewOrder.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrder.Location = new System.Drawing.Point(29, 77);
-            this.dataGridViewOrder.Name = "dataGridViewOrder";
-            this.dataGridViewOrder.RowTemplate.Height = 23;
-            this.dataGridViewOrder.Size = new System.Drawing.Size(638, 244);
-            this.dataGridViewOrder.TabIndex = 3;
-            // 
-            // dataGridViewEmployee
-            // 
-            this.dataGridViewEmployee.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(36, 65);
-            this.dataGridViewEmployee.Name = "dataGridViewEmployee";
-            this.dataGridViewEmployee.RowTemplate.Height = 23;
-            this.dataGridViewEmployee.Size = new System.Drawing.Size(632, 262);
-            this.dataGridViewEmployee.TabIndex = 3;
-            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -396,13 +397,13 @@
             this.tabControl1.ResumeLayout(false);
             this.taskTab.ResumeLayout(false);
             this.taskTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinish)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinish)).EndInit();
             this.infoTab.ResumeLayout(false);
             this.infoTab.PerformLayout();
             this.distributeTab.ResumeLayout(false);
-            this.adminTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
+            this.adminTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -435,8 +436,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridViewFinish;
         private System.Windows.Forms.DataGridView dataGridViewToDo;
+        private System.Windows.Forms.DataGridView dataGridViewFinish;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewOrder;
         private System.Windows.Forms.DataGridView dataGridViewEmployee;

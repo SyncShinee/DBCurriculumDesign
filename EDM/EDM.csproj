@@ -69,6 +69,12 @@
     <Compile Include="EmployeeForm.Designer.cs">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EndTransForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndTransForm.Designer.cs">
+      <DependentUpon>EndTransForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     <EmbeddedResource Include="AddPlaceForm.resx">
       <DependentUpon>AddPlaceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="StartTransForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartTransForm.Designer.cs">
+      <DependentUpon>StartTransForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeForm.resx">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EndTransForm.resx">
+      <DependentUpon>EndTransForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -125,6 +140,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StartTransForm.resx">
+      <DependentUpon>StartTransForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TransForm.resx">
       <DependentUpon>TransForm.cs</DependentUpon>
     </EmbeddedResource>
