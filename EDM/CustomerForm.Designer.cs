@@ -43,6 +43,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.maleButton = new System.Windows.Forms.RadioButton();
+            this.femaleButton = new System.Windows.Forms.RadioButton();
             this.buttonUpdKey = new System.Windows.Forms.Button();
             this.infoUpdate = new System.Windows.Forms.Button();
             this.textBoxMail = new System.Windows.Forms.TextBox();
@@ -56,9 +58,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label_user = new System.Windows.Forms.Label();
-            this.maleButton = new System.Windows.Forms.RadioButton();
-            this.femaleButton = new System.Windows.Forms.RadioButton();
+            this.welcome = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -83,10 +83,10 @@
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1134, 492);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1069, 566);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "我的订单";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(21, 9);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 45);
             this.button1.TabIndex = 0;
@@ -122,10 +122,10 @@
             this.tabPage2.Controls.Add(this.textBox2);
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1134, 492);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1069, 566);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "提交订单";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@
             this.Column_goodstype,
             this.Column_goodswight});
             this.dataGridView2.Location = new System.Drawing.Point(93, 104);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(514, 242);
@@ -163,7 +163,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(468, 408);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(104, 40);
             this.button2.TabIndex = 4;
@@ -194,7 +194,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(714, 296);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(202, 28);
             this.textBox2.TabIndex = 1;
@@ -202,7 +202,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(714, 152);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(204, 28);
             this.textBox1.TabIndex = 0;
@@ -225,18 +225,40 @@
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1069, 566);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "个人信息";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // maleButton
+            // 
+            this.maleButton.AutoSize = true;
+            this.maleButton.Location = new System.Drawing.Point(349, 218);
+            this.maleButton.Name = "maleButton";
+            this.maleButton.Size = new System.Drawing.Size(51, 22);
+            this.maleButton.TabIndex = 32;
+            this.maleButton.TabStop = true;
+            this.maleButton.Text = "男";
+            this.maleButton.UseVisualStyleBackColor = true;
+            // 
+            // femaleButton
+            // 
+            this.femaleButton.AutoSize = true;
+            this.femaleButton.Location = new System.Drawing.Point(275, 218);
+            this.femaleButton.Name = "femaleButton";
+            this.femaleButton.Size = new System.Drawing.Size(51, 22);
+            this.femaleButton.TabIndex = 31;
+            this.femaleButton.TabStop = true;
+            this.femaleButton.Text = "女";
+            this.femaleButton.UseVisualStyleBackColor = true;
+            // 
             // buttonUpdKey
             // 
             this.buttonUpdKey.Location = new System.Drawing.Point(590, 354);
-            this.buttonUpdKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUpdKey.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUpdKey.Name = "buttonUpdKey";
             this.buttonUpdKey.Size = new System.Drawing.Size(136, 66);
             this.buttonUpdKey.TabIndex = 13;
@@ -247,7 +269,7 @@
             // infoUpdate
             // 
             this.infoUpdate.Location = new System.Drawing.Point(296, 354);
-            this.infoUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.infoUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.infoUpdate.Name = "infoUpdate";
             this.infoUpdate.Size = new System.Drawing.Size(136, 66);
             this.infoUpdate.TabIndex = 12;
@@ -258,7 +280,7 @@
             // textBoxMail
             // 
             this.textBoxMail.Location = new System.Drawing.Point(641, 216);
-            this.textBoxMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxMail.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(168, 28);
             this.textBoxMail.TabIndex = 11;
@@ -266,7 +288,7 @@
             // textBoxPhn
             // 
             this.textBoxPhn.Location = new System.Drawing.Point(641, 150);
-            this.textBoxPhn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPhn.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPhn.Name = "textBoxPhn";
             this.textBoxPhn.Size = new System.Drawing.Size(168, 28);
             this.textBoxPhn.TabIndex = 10;
@@ -274,7 +296,7 @@
             // textBoxAge
             // 
             this.textBoxAge.Location = new System.Drawing.Point(641, 84);
-            this.textBoxAge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAge.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAge.Name = "textBoxAge";
             this.textBoxAge.Size = new System.Drawing.Size(168, 28);
             this.textBoxAge.TabIndex = 9;
@@ -282,7 +304,7 @@
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(275, 150);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(148, 28);
             this.textBoxName.TabIndex = 7;
@@ -290,7 +312,7 @@
             // textBoxAccount
             // 
             this.textBoxAccount.Location = new System.Drawing.Point(275, 84);
-            this.textBoxAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAccount.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAccount.Name = "textBoxAccount";
             this.textBoxAccount.Size = new System.Drawing.Size(148, 28);
             this.textBoxAccount.TabIndex = 6;
@@ -355,46 +377,25 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "用户账号";
             // 
-            // label_user
+            // welcome
             // 
-            this.label_user.AutoSize = true;
-            this.label_user.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_user.Location = new System.Drawing.Point(926, 9);
-            this.label_user.Name = "label_user";
-            this.label_user.Size = new System.Drawing.Size(103, 18);
-            this.label_user.TabIndex = 1;
-            this.label_user.Text = "欢迎，用户";
-            // 
-            // maleButton
-            // 
-            this.maleButton.AutoSize = true;
-            this.maleButton.Location = new System.Drawing.Point(349, 218);
-            this.maleButton.Name = "maleButton";
-            this.maleButton.Size = new System.Drawing.Size(51, 22);
-            this.maleButton.TabIndex = 32;
-            this.maleButton.TabStop = true;
-            this.maleButton.Text = "男";
-            this.maleButton.UseVisualStyleBackColor = true;
-            // 
-            // femaleButton
-            // 
-            this.femaleButton.AutoSize = true;
-            this.femaleButton.Location = new System.Drawing.Point(275, 218);
-            this.femaleButton.Name = "femaleButton";
-            this.femaleButton.Size = new System.Drawing.Size(51, 22);
-            this.femaleButton.TabIndex = 31;
-            this.femaleButton.TabStop = true;
-            this.femaleButton.Text = "女";
-            this.femaleButton.UseVisualStyleBackColor = true;
+            this.welcome.AutoSize = true;
+            this.welcome.Cursor = System.Windows.Forms.Cursors.Default;
+            this.welcome.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.welcome.Location = new System.Drawing.Point(926, 9);
+            this.welcome.Name = "welcome";
+            this.welcome.Size = new System.Drawing.Size(103, 18);
+            this.welcome.TabIndex = 1;
+            this.welcome.Text = "欢迎，用户";
             // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 590);
-            this.Controls.Add(this.label_user);
+            this.Controls.Add(this.welcome);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CustomerForm";
             this.Text = "快递信息管理系统";
             this.Load += new System.EventHandler(this.CustomerForm_Load);
@@ -441,7 +442,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label_user;
+        private System.Windows.Forms.Label welcome;
         private System.Windows.Forms.RadioButton maleButton;
         private System.Windows.Forms.RadioButton femaleButton;
     }

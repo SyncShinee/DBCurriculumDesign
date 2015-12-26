@@ -50,6 +50,7 @@
             // 
             this.oldPswdText.Location = new System.Drawing.Point(226, 96);
             this.oldPswdText.Name = "oldPswdText";
+            this.oldPswdText.PasswordChar = '*';
             this.oldPswdText.Size = new System.Drawing.Size(160, 28);
             this.oldPswdText.TabIndex = 1;
             // 
@@ -57,6 +58,7 @@
             // 
             this.confirmText.Location = new System.Drawing.Point(226, 219);
             this.confirmText.Name = "confirmText";
+            this.confirmText.PasswordChar = '*';
             this.confirmText.Size = new System.Drawing.Size(160, 28);
             this.confirmText.TabIndex = 3;
             // 
@@ -73,6 +75,7 @@
             // 
             this.newPswdText.Location = new System.Drawing.Point(226, 154);
             this.newPswdText.Name = "newPswdText";
+            this.newPswdText.PasswordChar = '*';
             this.newPswdText.Size = new System.Drawing.Size(160, 28);
             this.newPswdText.TabIndex = 5;
             // 

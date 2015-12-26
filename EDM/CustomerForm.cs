@@ -162,7 +162,7 @@ namespace EDM
         {
             dataGridView1.ReadOnly = true;
 
-            label_user.Text = "欢迎, " + ManageForm.username;
+            welcome.Text = "欢迎, " + ManageForm.username;
             MySqlCommand mComd;
             MySqlDataReader reader;
             mComd = new MySqlCommand("select * from place", ManageForm.mConn);
@@ -185,7 +185,26 @@ namespace EDM
             textBox2.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             textBox2.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
+            welcome.Text = "欢迎，" + ManageForm.username;
 
+            mComd = new MySqlCommand("select * from user where user_id=" + ManageForm.userid + ";", ManageForm.mConn);
+            MySqlDataReader mRead = mComd.ExecuteReader();
+            mRead.Read();
+            textBoxAccount.Text = mRead["user_account"].ToString();
+            textBoxName.Text = mRead["user_name"].ToString();
+            textBoxAge.Text = mRead["user_age"].ToString();
+            textBoxPhn.Text = mRead["user_phone"].ToString();
+            textBoxMail.Text = mRead["user_email"].ToString();
+            if (mRead["user_gender"].ToString().Equals("False"))
+            {
+                femaleButton.Checked = true;
+            }
+            else
+            {
+                maleButton.Checked = true;
+            }
+            mRead.Dispose();
+            mComd.Dispose();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -285,7 +304,58 @@ namespace EDM
 
         private void infoUpdate_Click(object sender, EventArgs e)
         {
+            String account = textBoxAccount.Text;
+            String name = textBoxName.Text;
+            String phone = textBoxPhn.Text;
+            String email = textBoxMail.Text;
+            int age = 0;
+            int gender;
+            if (account.Equals("")) {
+                MessageBox.Show("用户账号不能为空！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else if (name.Equals(""))
+            {
+                MessageBox.Show("用户姓名不能为空！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else if (phone.Equals("") || phone.Length != 11)
+            {
+                MessageBox.Show("手机号码填写不正确！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else if (email.Equals("")) {
+                MessageBox.Show("联系邮箱不能为空！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
+            else
+            {
+                try
+                {
+                    age = int.Parse(textBoxAge.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("年龄填写不正确！", "提示", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                }
+                gender = femaleButton.Checked ? 0 : 1;
 
+                MySqlCommand mComd = new MySqlCommand(
+                    "UPDATE `expressdata`.`user`" +
+                    "SET" +
+                    "`user_account` = '" + account + "'," +
+                    "`user_name` = '" + name + "'," +
+                    "`user_gender` = " + gender + "," +
+                    "`user_age` = " + age + "," +
+                    "`user_phone` = '" + phone + "'," +
+                    "`user_email` = '" + email + "'" +
+                    "WHERE `user_id` = " + ManageForm.userid + ";", ManageForm.mConn);
+                mComd.ExecuteNonQuery();
+                mComd.Dispose();
+                MessageBox.Show("更新个人资料成功！", "提示", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            }
         }
     }
 }

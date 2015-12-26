@@ -34,7 +34,12 @@ namespace EDM
                 city = province;
                 district = province;
                 level = 1;
-
+                MySqlCommand mComd = new MySqlCommand(
+                "INSERT INTO `expressdata`.`place`" +
+                "(`province`,`city`,`district`,`level`)" +
+                "VALUES('" + province + "','省级','中转站'," + level + ");", ManageForm.mConn);
+                mComd.ExecuteNonQuery();
+                mComd.Dispose();
             }
             else if (comboBoxLevel.SelectedItem.ToString().Equals("市级"))
             {
@@ -42,6 +47,12 @@ namespace EDM
                 city = textBoxCity.Text;
                 district = city;
                 level = 2;
+                MySqlCommand mComd = new MySqlCommand(
+                "INSERT INTO `expressdata`.`place`" +
+                "(`province`,`city`,`district`,`level`)" +
+                "VALUES('" + province + "','" + city + "','市级中转站'," + level + ");", ManageForm.mConn);
+                mComd.ExecuteNonQuery();
+                mComd.Dispose();
             }
             else   //comboBoxLevel.SelectedItem.ToString().Equals("镇/区级")
             {
@@ -49,15 +60,18 @@ namespace EDM
                 city = textBoxCity.Text;
                 district = textBoxDistrict.Text;
                 level = 3;
-            }
-            MySqlCommand mComd = new MySqlCommand(
+                MySqlCommand mComd = new MySqlCommand(
                 "INSERT INTO `expressdata`.`place`" +
                 "(`province`,`city`,`district`,`level`)" +
                 "VALUES('" + province + "','" + city + "','" + district + "'," + level + ");", ManageForm.mConn);
-            mComd.ExecuteNonQuery();
-            mComd.Dispose();
+                mComd.ExecuteNonQuery();
+                mComd.Dispose();
+            }
             MessageBox.Show("增加新地点成功！", "提示", MessageBoxButtons.OK,
                             MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            textBoxProvince.Clear();
+            textBoxCity.Clear();
+            textBoxDistrict.Clear();
         }
 
         private void comboBoxLevel_SelectedIndexChanged(object sender, EventArgs e)

@@ -106,6 +106,7 @@
             // 
             this.passwordTextU.Location = new System.Drawing.Point(211, 197);
             this.passwordTextU.Name = "passwordTextU";
+            this.passwordTextU.PasswordChar = '*';
             this.passwordTextU.Size = new System.Drawing.Size(237, 28);
             this.passwordTextU.TabIndex = 3;
             // 
@@ -163,6 +164,7 @@
             // 
             this.passwordTextE.Location = new System.Drawing.Point(212, 197);
             this.passwordTextE.Name = "passwordTextE";
+            this.passwordTextE.PasswordChar = '*';
             this.passwordTextE.Size = new System.Drawing.Size(237, 28);
             this.passwordTextE.TabIndex = 8;
             // 
@@ -327,6 +329,7 @@
             // 
             this.confirmText.Location = new System.Drawing.Point(164, 164);
             this.confirmText.Name = "confirmText";
+            this.confirmText.PasswordChar = '*';
             this.confirmText.Size = new System.Drawing.Size(177, 28);
             this.confirmText.TabIndex = 5;
             // 
@@ -343,6 +346,7 @@
             // 
             this.passwordTextR.Location = new System.Drawing.Point(164, 106);
             this.passwordTextR.Name = "passwordTextR";
+            this.passwordTextR.PasswordChar = '*';
             this.passwordTextR.Size = new System.Drawing.Size(177, 28);
             this.passwordTextR.TabIndex = 3;
             // 
