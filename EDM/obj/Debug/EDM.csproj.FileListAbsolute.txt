@@ -22,3 +22,4 @@ D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.Properties.Resou
 D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.csproj.GenerateResource.Cache
 C:\Users\nightcool\Documents\Visual Studio 2013\Projects\DBCurriculumDesign\EDM\obj\Debug\EDM.CustomerForm.resources
 C:\Users\nightcool\Documents\Visual Studio 2013\Projects\DBCurriculumDesign\EDM\obj\Debug\EDM.EmployeeForm.resources
+D:\SourceCode\VisualStudio\DBCurriculumDesign\EDM\obj\Debug\EDM.EmployeeForm.resources
