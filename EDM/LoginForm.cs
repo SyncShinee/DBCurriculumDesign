@@ -188,6 +188,15 @@ namespace EDM
                         mComd.Dispose();
                         MessageBox.Show("注册成功！", "提示", MessageBoxButtons.OK,
                                         MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                        accountTextR.Clear();
+                        passwordTextR.Clear();
+                        confirmText.Clear();
+                        nameText.Clear();
+                        ageText.Clear();
+                        phoneText.Clear();
+                        emailText.Clear();
+                        femaleButton.Checked = true;
+                        maleButton.Checked = false;
                     }
                     catch (Exception ex) 
                     {

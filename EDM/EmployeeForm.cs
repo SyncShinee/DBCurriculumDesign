@@ -374,6 +374,7 @@ namespace EDM
                     dt_goods_roads.Rows[i]["goods"] + ");";
                 msc = new MySqlCommand(trans_goods_ins, ManageForm.mConn);
                 msc.ExecuteNonQuery();
+                msc.Dispose();
 
                 String trans_emp_ins =
                     "INSERT INTO `expressdata`.`employee_transport`(`employee_id`,`transport_id`,`charge`)VALUES(" +
@@ -382,6 +383,11 @@ namespace EDM
                     "1" + ");";
                 msc = new MySqlCommand(trans_emp_ins, ManageForm.mConn);
                 msc.ExecuteNonQuery();
+                msc.Dispose();
+
+                msc = new MySqlCommand("CALL ADD_TRANSPORT(" + transport_id + "(;", ManageForm.mConn);
+                msc.ExecuteNonQuery();
+                msc.Dispose();
             }
             MessageBox.Show("配送任务分配成功！");
         }

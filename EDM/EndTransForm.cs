@@ -34,7 +34,12 @@ namespace EDM
                 "' WHERE `transport_id` = " + transid + ";";
             MySqlCommand mc = new MySqlCommand(trans_upd, ManageForm.mConn);
             mc.ExecuteNonQuery();
-            //todo 
+            mc.Dispose();
+
+            mc = new MySqlCommand("CALL FINISH_TRANSPORT(" + transid + ");", ManageForm.mConn);
+            mc.ExecuteNonQuery();
+            mc.Dispose();
+
             this.Dispose();
         }
     }
