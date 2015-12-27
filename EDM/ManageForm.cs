@@ -136,7 +136,7 @@ namespace EDM
                 "`gender` TINYINT(1) NOT NULL," +
                 "`age` INT NOT NULL," +
                 "`phone` VARCHAR(20) NOT NULL," +
-                "`worktime` INT NOT NULL," +
+                "`worktime` TIME NOT NULL," +
                 "`location` INT NOT NULL," +
                 "PRIMARY KEY (`employee_id`));", mConn);
             mComd.ExecuteNonQuery();
