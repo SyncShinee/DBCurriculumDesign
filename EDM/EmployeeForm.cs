@@ -493,9 +493,9 @@ namespace EDM
         private void button7_Click(object sender, EventArgs e)
         {
             String empid = dataGridViewEmployee.CurrentRow.Cells[0].Value.ToString();
-            String sql = "";
-
+            String sql = "DELETE FROM `expressdata`.`employee`WHERE employee_id = " + empid + ";";
             MySqlCommand mc = new MySqlCommand(sql, ManageForm.mConn);
+            mc.ExecuteNonQuery();
         }
 
     }

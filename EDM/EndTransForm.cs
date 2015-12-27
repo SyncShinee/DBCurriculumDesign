@@ -23,6 +23,9 @@ namespace EDM
 
         private void button2_Click(object sender, EventArgs e)
         {
+            MySqlCommand mc;
+            mc = new MySqlCommand("select starttime from expressdata.transport where transport_id = " + transid + ";", ManageForm.mConn);
+            MessageBox.Show(mc.ExecuteScalar().ToString());
             this.Dispose();
         }
 
