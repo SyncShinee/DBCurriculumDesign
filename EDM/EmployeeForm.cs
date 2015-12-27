@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Collections;
 
 namespace EDM
 {
@@ -29,9 +30,9 @@ namespace EDM
             welcome.Text = "欢迎，" + ManageForm.username;
 
             dataGridViewEmployee.ReadOnly = true;
-            dataGridViewFinish.ReadOnly = true;
-            dataGridViewOrder.ReadOnly = true;
             dataGridViewToDo.ReadOnly = true;
+            dataGridViewOrder.ReadOnly = true;
+            dataGridViewFinish.ReadOnly = true;
 
             MySqlCommand mComd = new MySqlCommand("select * from employee where employee_id=" + ManageForm.userid + ";", ManageForm.mConn);
             MySqlDataReader mRead = mComd.ExecuteReader();
@@ -168,6 +169,7 @@ namespace EDM
             dt.Columns.Add("联系电话");
             dt.Columns.Add("工作时长");
             dt.Columns.Add("负责的配送任务数目");
+            dt.Columns.Add("参与的配送任务数目");
             dt.Columns.Add("当前所在位置");
             for (int i = 0; i < num; ++ i)
             {
@@ -195,6 +197,11 @@ namespace EDM
                 String sql = "select count(*) from expressdata.employee_transport where employee_id = " + ds.Tables["emp"].Rows[i]["employee_id"].ToString() + " and charge = 1;";
                 mc = new MySqlCommand(sql, ManageForm.mConn);
                 dr["负责的配送任务数目"] = mc.ExecuteScalar().ToString();
+                mc.Dispose();
+
+                sql = "select count(*) from expressdata.employee_transport where employee_id = " + ds.Tables["emp"].Rows[i]["employee_id"].ToString() + ";";
+                mc = new MySqlCommand(sql, ManageForm.mConn);
+                dr["参与的配送任务数目"] = mc.ExecuteScalar().ToString();
                 mc.Dispose();
 
                 dt.Rows.Add(dr);
@@ -323,8 +330,8 @@ namespace EDM
                 dt_finish.Rows[i]["负责人"] = msdr["name"];
                 msdr.Dispose();
             }
-            dataGridViewToDo.DataSource = dt_todo;
             dataGridViewFinish.DataSource = dt_finish;
+            dataGridViewToDo.DataSource = dt_todo;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -448,15 +455,19 @@ namespace EDM
 
             for (int i = 0; i < dt_goods_roads.Rows.Count; ++i)
             {
+                ArrayList al = new ArrayList();
                 MySqlCommand msc;
                 msc = new MySqlCommand("select employee_id from expressdata.employee where location = " + dt_goods_roads.Rows[i]["st"] + ";", ManageForm.mConn);
                 MySqlDataReader md = msc.ExecuteReader();
                 md.Read();
                 String person = md["employee_id"].ToString();
-                if (person == "1")
-                {
-                    md.Read();
+                while (md.Read()) {
+                    if (md["employee_id"] == "1")
+                    {
+                        continue;
+                    }
                     person = md["employee_id"].ToString();
+                    al.Add(person);
                 }
                 md.Dispose();
                 msc.Dispose();
@@ -491,14 +502,33 @@ namespace EDM
                 msc.ExecuteNonQuery();
                 msc.Dispose();
 
-                String trans_emp_ins =
-                    "INSERT INTO `expressdata`.`employee_transport`(`employee_id`,`transport_id`,`charge`)VALUES(" +
-                    person + "," +
-                    transport_id + "," +
-                    "1" + ");";
-                msc = new MySqlCommand(trans_emp_ins, ManageForm.mConn);
-                msc.ExecuteNonQuery();
-                msc.Dispose();
+                
+
+                foreach (var item in al)
+                {
+                    if (item.ToString() == person)
+                    {
+                        String trans_emp_ins =
+                            "INSERT INTO `expressdata`.`employee_transport`(`employee_id`,`transport_id`,`charge`)VALUES(" +
+                            person + "," +
+                            transport_id + "," +
+                            "1" + ");";
+                        msc = new MySqlCommand(trans_emp_ins, ManageForm.mConn);
+                        msc.ExecuteNonQuery();
+                        msc.Dispose();
+                    }
+                    else
+                    {
+                        String trans_emp_ins =
+                            "INSERT INTO `expressdata`.`employee_transport`(`employee_id`,`transport_id`,`charge`)VALUES(" +
+                            item.ToString() + "," +
+                            transport_id + "," +
+                            "0" + ");";
+                        msc = new MySqlCommand(trans_emp_ins, ManageForm.mConn);
+                        msc.ExecuteNonQuery();
+                        msc.Dispose();
+                    }
+                }
 
                 msc = new MySqlCommand("CALL ADD_TRANSPORT(" + transport_id + ");", ManageForm.mConn);
                 msc.ExecuteNonQuery();

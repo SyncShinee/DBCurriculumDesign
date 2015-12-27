@@ -32,10 +32,12 @@
             this.taskTab = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewToDo = new System.Windows.Forms.DataGridView();
             this.dataGridViewFinish = new System.Windows.Forms.DataGridView();
+            this.dataGridViewToDo = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.infoTab = new System.Windows.Forms.TabPage();
+            this.textBoxPlace = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.maleButton = new System.Windows.Forms.RadioButton();
             this.femaleButton = new System.Windows.Forms.RadioButton();
             this.buttonUpdKey = new System.Windows.Forms.Button();
@@ -58,12 +60,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.welcome = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxPlace = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.taskTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinish)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).BeginInit();
             this.infoTab.SuspendLayout();
             this.distributeTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
@@ -81,21 +81,21 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(718, 399);
+            this.tabControl1.Size = new System.Drawing.Size(795, 399);
             this.tabControl1.TabIndex = 0;
             // 
             // taskTab
             // 
             this.taskTab.Controls.Add(this.label2);
             this.taskTab.Controls.Add(this.label1);
-            this.taskTab.Controls.Add(this.dataGridViewToDo);
             this.taskTab.Controls.Add(this.dataGridViewFinish);
+            this.taskTab.Controls.Add(this.dataGridViewToDo);
             this.taskTab.Controls.Add(this.button1);
             this.taskTab.Location = new System.Drawing.Point(4, 22);
             this.taskTab.Margin = new System.Windows.Forms.Padding(2);
             this.taskTab.Name = "taskTab";
             this.taskTab.Padding = new System.Windows.Forms.Padding(2);
-            this.taskTab.Size = new System.Drawing.Size(710, 373);
+            this.taskTab.Size = new System.Drawing.Size(787, 373);
             this.taskTab.TabIndex = 0;
             this.taskTab.Text = "我的任务";
             this.taskTab.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(366, 62);
+            this.label2.Location = new System.Drawing.Point(406, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 12);
             this.label2.TabIndex = 4;
@@ -118,26 +118,26 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "待完成的配送任务";
             // 
-            // dataGridViewToDo
-            // 
-            this.dataGridViewToDo.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridViewToDo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewToDo.Location = new System.Drawing.Point(22, 88);
-            this.dataGridViewToDo.Name = "dataGridViewToDo";
-            this.dataGridViewToDo.RowTemplate.Height = 23;
-            this.dataGridViewToDo.Size = new System.Drawing.Size(317, 236);
-            this.dataGridViewToDo.TabIndex = 2;
-            this.dataGridViewToDo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToDo_CellClick);
-            // 
             // dataGridViewFinish
             // 
             this.dataGridViewFinish.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewFinish.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFinish.Location = new System.Drawing.Point(368, 88);
+            this.dataGridViewFinish.Location = new System.Drawing.Point(408, 90);
             this.dataGridViewFinish.Name = "dataGridViewFinish";
             this.dataGridViewFinish.RowTemplate.Height = 23;
-            this.dataGridViewFinish.Size = new System.Drawing.Size(317, 236);
-            this.dataGridViewFinish.TabIndex = 1;
+            this.dataGridViewFinish.Size = new System.Drawing.Size(356, 236);
+            this.dataGridViewFinish.TabIndex = 2;
+            // 
+            // dataGridViewToDo
+            // 
+            this.dataGridViewToDo.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridViewToDo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewToDo.Location = new System.Drawing.Point(22, 90);
+            this.dataGridViewToDo.Name = "dataGridViewToDo";
+            this.dataGridViewToDo.RowTemplate.Height = 23;
+            this.dataGridViewToDo.Size = new System.Drawing.Size(356, 236);
+            this.dataGridViewToDo.TabIndex = 1;
+            this.dataGridViewToDo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToDo_CellClick);
             // 
             // button1
             // 
@@ -169,15 +169,31 @@
             this.infoTab.Margin = new System.Windows.Forms.Padding(2);
             this.infoTab.Name = "infoTab";
             this.infoTab.Padding = new System.Windows.Forms.Padding(2);
-            this.infoTab.Size = new System.Drawing.Size(710, 373);
+            this.infoTab.Size = new System.Drawing.Size(787, 373);
             this.infoTab.TabIndex = 1;
             this.infoTab.Text = "修改信息";
             this.infoTab.UseVisualStyleBackColor = true;
             // 
+            // textBoxPlace
+            // 
+            this.textBoxPlace.Location = new System.Drawing.Point(246, 174);
+            this.textBoxPlace.Name = "textBoxPlace";
+            this.textBoxPlace.Size = new System.Drawing.Size(113, 21);
+            this.textBoxPlace.TabIndex = 31;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(152, 177);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "所在地点";
+            // 
             // maleButton
             // 
             this.maleButton.AutoSize = true;
-            this.maleButton.Location = new System.Drawing.Point(287, 100);
+            this.maleButton.Location = new System.Drawing.Point(314, 127);
             this.maleButton.Margin = new System.Windows.Forms.Padding(2);
             this.maleButton.Name = "maleButton";
             this.maleButton.Size = new System.Drawing.Size(35, 16);
@@ -189,7 +205,7 @@
             // femaleButton
             // 
             this.femaleButton.AutoSize = true;
-            this.femaleButton.Location = new System.Drawing.Point(231, 100);
+            this.femaleButton.Location = new System.Drawing.Point(258, 127);
             this.femaleButton.Margin = new System.Windows.Forms.Padding(2);
             this.femaleButton.Name = "femaleButton";
             this.femaleButton.Size = new System.Drawing.Size(35, 16);
@@ -200,7 +216,7 @@
             // 
             // buttonUpdKey
             // 
-            this.buttonUpdKey.Location = new System.Drawing.Point(392, 203);
+            this.buttonUpdKey.Location = new System.Drawing.Point(419, 230);
             this.buttonUpdKey.Name = "buttonUpdKey";
             this.buttonUpdKey.Size = new System.Drawing.Size(91, 44);
             this.buttonUpdKey.TabIndex = 27;
@@ -210,7 +226,7 @@
             // 
             // infoUpdate
             // 
-            this.infoUpdate.Location = new System.Drawing.Point(227, 203);
+            this.infoUpdate.Location = new System.Drawing.Point(254, 230);
             this.infoUpdate.Name = "infoUpdate";
             this.infoUpdate.Size = new System.Drawing.Size(91, 44);
             this.infoUpdate.TabIndex = 26;
@@ -220,21 +236,21 @@
             // 
             // textBoxPhn
             // 
-            this.textBoxPhn.Location = new System.Drawing.Point(457, 100);
+            this.textBoxPhn.Location = new System.Drawing.Point(484, 127);
             this.textBoxPhn.Name = "textBoxPhn";
             this.textBoxPhn.Size = new System.Drawing.Size(113, 21);
             this.textBoxPhn.TabIndex = 24;
             // 
             // textBoxAge
             // 
-            this.textBoxAge.Location = new System.Drawing.Point(457, 47);
+            this.textBoxAge.Location = new System.Drawing.Point(484, 74);
             this.textBoxAge.Name = "textBoxAge";
             this.textBoxAge.Size = new System.Drawing.Size(113, 21);
             this.textBoxAge.TabIndex = 23;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(219, 47);
+            this.textBoxName.Location = new System.Drawing.Point(246, 74);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(113, 21);
             this.textBoxName.TabIndex = 21;
@@ -242,7 +258,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(390, 102);
+            this.label7.Location = new System.Drawing.Point(417, 129);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 12);
             this.label7.TabIndex = 18;
@@ -251,7 +267,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(390, 49);
+            this.label6.Location = new System.Drawing.Point(417, 76);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 17;
@@ -260,7 +276,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(149, 102);
+            this.label5.Location = new System.Drawing.Point(176, 129);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 16;
@@ -269,7 +285,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(149, 49);
+            this.label4.Location = new System.Drawing.Point(176, 76);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 15;
@@ -283,7 +299,7 @@
             this.distributeTab.Location = new System.Drawing.Point(4, 22);
             this.distributeTab.Margin = new System.Windows.Forms.Padding(2);
             this.distributeTab.Name = "distributeTab";
-            this.distributeTab.Size = new System.Drawing.Size(710, 373);
+            this.distributeTab.Size = new System.Drawing.Size(787, 373);
             this.distributeTab.TabIndex = 2;
             this.distributeTab.Text = "分配任务";
             this.distributeTab.UseVisualStyleBackColor = true;
@@ -292,15 +308,15 @@
             // 
             this.dataGridViewOrder.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrder.Location = new System.Drawing.Point(29, 77);
+            this.dataGridViewOrder.Location = new System.Drawing.Point(87, 77);
             this.dataGridViewOrder.Name = "dataGridViewOrder";
             this.dataGridViewOrder.RowTemplate.Height = 23;
-            this.dataGridViewOrder.Size = new System.Drawing.Size(638, 244);
+            this.dataGridViewOrder.Size = new System.Drawing.Size(611, 244);
             this.dataGridViewOrder.TabIndex = 3;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(162, 14);
+            this.button3.Location = new System.Drawing.Point(441, 14);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(79, 46);
@@ -311,7 +327,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(25, 14);
+            this.button2.Location = new System.Drawing.Point(271, 14);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(79, 46);
@@ -330,14 +346,14 @@
             this.adminTab.Location = new System.Drawing.Point(4, 22);
             this.adminTab.Margin = new System.Windows.Forms.Padding(2);
             this.adminTab.Name = "adminTab";
-            this.adminTab.Size = new System.Drawing.Size(710, 373);
+            this.adminTab.Size = new System.Drawing.Size(787, 373);
             this.adminTab.TabIndex = 3;
             this.adminTab.Text = "公司管理";
             this.adminTab.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(381, 16);
+            this.button7.Location = new System.Drawing.Point(550, 16);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(93, 33);
             this.button7.TabIndex = 4;
@@ -352,12 +368,12 @@
             this.dataGridViewEmployee.Location = new System.Drawing.Point(36, 65);
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.RowTemplate.Height = 23;
-            this.dataGridViewEmployee.Size = new System.Drawing.Size(632, 262);
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(715, 262);
             this.dataGridViewEmployee.TabIndex = 3;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(264, 16);
+            this.button6.Location = new System.Drawing.Point(400, 16);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(93, 33);
@@ -368,7 +384,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(150, 16);
+            this.button5.Location = new System.Drawing.Point(242, 16);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(93, 33);
@@ -379,7 +395,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(36, 16);
+            this.button4.Location = new System.Drawing.Point(94, 16);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(93, 33);
@@ -392,45 +408,30 @@
             // 
             this.welcome.AutoSize = true;
             this.welcome.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.welcome.Location = new System.Drawing.Point(617, 6);
+            this.welcome.Location = new System.Drawing.Point(645, 6);
             this.welcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.welcome.Name = "welcome";
             this.welcome.Size = new System.Drawing.Size(70, 12);
             this.welcome.TabIndex = 2;
             this.welcome.Text = "欢迎，用户";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(125, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "所在地点";
-            // 
-            // textBoxPlace
-            // 
-            this.textBoxPlace.Location = new System.Drawing.Point(219, 147);
-            this.textBoxPlace.Name = "textBoxPlace";
-            this.textBoxPlace.Size = new System.Drawing.Size(113, 21);
-            this.textBoxPlace.TabIndex = 31;
-            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 393);
+            this.ClientSize = new System.Drawing.Size(789, 371);
             this.Controls.Add(this.welcome);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "快递信息管理系统";
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.taskTab.ResumeLayout(false);
             this.taskTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinish)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).EndInit();
             this.infoTab.ResumeLayout(false);
             this.infoTab.PerformLayout();
             this.distributeTab.ResumeLayout(false);
@@ -468,8 +469,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridViewToDo;
         private System.Windows.Forms.DataGridView dataGridViewFinish;
+        private System.Windows.Forms.DataGridView dataGridViewToDo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewOrder;
         private System.Windows.Forms.DataGridView dataGridViewEmployee;
