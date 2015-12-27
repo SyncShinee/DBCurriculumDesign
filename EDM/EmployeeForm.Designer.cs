@@ -52,12 +52,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.adminTab = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
             this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.welcome = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxPlace = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.taskTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).BeginInit();
@@ -150,6 +152,8 @@
             // 
             // infoTab
             // 
+            this.infoTab.Controls.Add(this.textBoxPlace);
+            this.infoTab.Controls.Add(this.label3);
             this.infoTab.Controls.Add(this.maleButton);
             this.infoTab.Controls.Add(this.femaleButton);
             this.infoTab.Controls.Add(this.buttonUpdKey);
@@ -173,7 +177,7 @@
             // maleButton
             // 
             this.maleButton.AutoSize = true;
-            this.maleButton.Location = new System.Drawing.Point(268, 121);
+            this.maleButton.Location = new System.Drawing.Point(287, 100);
             this.maleButton.Margin = new System.Windows.Forms.Padding(2);
             this.maleButton.Name = "maleButton";
             this.maleButton.Size = new System.Drawing.Size(35, 16);
@@ -185,7 +189,7 @@
             // femaleButton
             // 
             this.femaleButton.AutoSize = true;
-            this.femaleButton.Location = new System.Drawing.Point(219, 121);
+            this.femaleButton.Location = new System.Drawing.Point(231, 100);
             this.femaleButton.Margin = new System.Windows.Forms.Padding(2);
             this.femaleButton.Name = "femaleButton";
             this.femaleButton.Size = new System.Drawing.Size(35, 16);
@@ -216,21 +220,21 @@
             // 
             // textBoxPhn
             // 
-            this.textBoxPhn.Location = new System.Drawing.Point(457, 121);
+            this.textBoxPhn.Location = new System.Drawing.Point(457, 100);
             this.textBoxPhn.Name = "textBoxPhn";
             this.textBoxPhn.Size = new System.Drawing.Size(113, 21);
             this.textBoxPhn.TabIndex = 24;
             // 
             // textBoxAge
             // 
-            this.textBoxAge.Location = new System.Drawing.Point(457, 77);
+            this.textBoxAge.Location = new System.Drawing.Point(457, 47);
             this.textBoxAge.Name = "textBoxAge";
             this.textBoxAge.Size = new System.Drawing.Size(113, 21);
             this.textBoxAge.TabIndex = 23;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(219, 77);
+            this.textBoxName.Location = new System.Drawing.Point(219, 47);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(113, 21);
             this.textBoxName.TabIndex = 21;
@@ -238,7 +242,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(390, 123);
+            this.label7.Location = new System.Drawing.Point(390, 102);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 12);
             this.label7.TabIndex = 18;
@@ -247,7 +251,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(390, 79);
+            this.label6.Location = new System.Drawing.Point(390, 49);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 17;
@@ -256,7 +260,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(149, 123);
+            this.label5.Location = new System.Drawing.Point(149, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 16;
@@ -265,7 +269,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(149, 79);
+            this.label4.Location = new System.Drawing.Point(149, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 15;
@@ -331,6 +335,16 @@
             this.adminTab.Text = "公司管理";
             this.adminTab.UseVisualStyleBackColor = true;
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(381, 16);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(93, 33);
+            this.button7.TabIndex = 4;
+            this.button7.Text = "删除该员工";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // dataGridViewEmployee
             // 
             this.dataGridViewEmployee.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
@@ -385,15 +399,21 @@
             this.welcome.TabIndex = 2;
             this.welcome.Text = "欢迎，用户";
             // 
-            // button7
+            // label3
             // 
-            this.button7.Location = new System.Drawing.Point(381, 16);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(93, 33);
-            this.button7.TabIndex = 4;
-            this.button7.Text = "删除该员工";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(125, 150);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "所在地点";
+            // 
+            // textBoxPlace
+            // 
+            this.textBoxPlace.Location = new System.Drawing.Point(219, 147);
+            this.textBoxPlace.Name = "textBoxPlace";
+            this.textBoxPlace.Size = new System.Drawing.Size(113, 21);
+            this.textBoxPlace.TabIndex = 31;
             // 
             // EmployeeForm
             // 
@@ -454,5 +474,7 @@
         private System.Windows.Forms.DataGridView dataGridViewOrder;
         private System.Windows.Forms.DataGridView dataGridViewEmployee;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox textBoxPlace;
+        private System.Windows.Forms.Label label3;
     }
 }

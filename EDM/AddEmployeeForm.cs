@@ -14,8 +14,12 @@ namespace EDM
 {
     public partial class AddEmployeeForm : Form
     {
+        private Dictionary<String, String> mp;
+
         public AddEmployeeForm()
         {
+            mp = new Dictionary<String, String>();
+            mp.Clear();
             InitializeComponent();
         }
 
@@ -50,7 +54,7 @@ namespace EDM
 
                 try
                 {
-                    location = int.Parse(locationText.Text);
+                    location = int.Parse(mp[locationText.Text]);
                 }
                 catch (Exception ex)
                 {
@@ -83,6 +87,28 @@ namespace EDM
                 femaleButton.Checked = false;
                 maleButton.Checked = false;
             }
+        }
+
+        private void AddEmployeeForm_Load(object sender, EventArgs e)
+        {
+            MySqlCommand mComd;
+            MySqlDataReader reader;
+            mComd = new MySqlCommand("select * from place", ManageForm.mConn);
+            reader = mComd.ExecuteReader();
+
+            AutoCompleteStringCollection source = new AutoCompleteStringCollection();
+
+            while (reader.Read())
+            {
+                String tmp = reader["province"].ToString() + reader["city"].ToString() + reader["district"].ToString();
+                source.Add(tmp);
+                mp.Add(tmp, reader["place_id"].ToString());
+            }
+            reader.Dispose();
+            
+            locationText.AutoCompleteCustomSource = source;
+            locationText.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            locationText.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
     }
 }
