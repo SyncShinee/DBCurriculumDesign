@@ -172,19 +172,45 @@ namespace EDM
             mComd.ExecuteNonQuery();
             mComd.Dispose();
 
-            mComd = new MySqlCommand(
+            mComd = new MySqlCommand("select * from employee", mConn);
+            mRead = mComd.ExecuteReader();
+            if (!mRead.HasRows)
+            {
+                mRead.Dispose();
+                mComd.Dispose();
+
+                mComd = new MySqlCommand(
                 "INSERT INTO `expressdata`.`employee`" +
                 "(`password`,`name`,`gender`,`age`,`phone`,`worktime`,`location`)" +
                 "VALUES('123456','管理员',1,30,'13070118279',0,1);", mConn);
-            mComd.ExecuteNonQuery();
-            mComd.Dispose();
+                mComd.ExecuteNonQuery();
+                mComd.Dispose();
+            }
+            else
+            {
+                mRead.Dispose();
+                mComd.Dispose();
+            }
 
-            mComd = new MySqlCommand(
+            mComd = new MySqlCommand("select * from place", mConn);
+            mRead = mComd.ExecuteReader();
+            if (!mRead.HasRows)
+            {
+                mRead.Dispose();
+                mComd.Dispose();
+
+                mComd = new MySqlCommand(
                 "INSERT INTO `expressdata`.`place`" +
                 "(`province`,`city`,`district`,`level`)" +
                 "VALUES('北京市','省级','中转站',1);", mConn);
-            mComd.ExecuteNonQuery();
-            mComd.Dispose();
+                mComd.ExecuteNonQuery();
+                mComd.Dispose();
+            }
+            else
+            {
+                mRead.Dispose();
+                mComd.Dispose();
+            }
         }
     }
 }
