@@ -190,7 +190,6 @@ namespace EDM
             mComd = new MySqlCommand("select * from user where user_id=" + ManageForm.userid + ";", ManageForm.mConn);
             MySqlDataReader mRead = mComd.ExecuteReader();
             mRead.Read();
-            textBoxAccount.Text = mRead["user_account"].ToString();
             textBoxName.Text = mRead["user_name"].ToString();
             textBoxAge.Text = mRead["user_age"].ToString();
             textBoxPhn.Text = mRead["user_phone"].ToString();
@@ -305,17 +304,13 @@ namespace EDM
 
         private void infoUpdate_Click(object sender, EventArgs e)
         {
-            String account = textBoxAccount.Text;
             String name = textBoxName.Text;
             String phone = textBoxPhn.Text;
             String email = textBoxMail.Text;
             int age = 0;
             int gender;
-            if (account.Equals("")) {
-                MessageBox.Show("用户账号不能为空！", "提示", MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-            }
-            else if (name.Equals(""))
+            
+            if (name.Equals(""))
             {
                 MessageBox.Show("用户姓名不能为空！", "提示", MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
@@ -345,7 +340,6 @@ namespace EDM
                 MySqlCommand mComd = new MySqlCommand(
                     "UPDATE `expressdata`.`user`" +
                     "SET" +
-                    "`user_account` = '" + account + "'," +
                     "`user_name` = '" + name + "'," +
                     "`user_gender` = " + gender + "," +
                     "`user_age` = " + age + "," +

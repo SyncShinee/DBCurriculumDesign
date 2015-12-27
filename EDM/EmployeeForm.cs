@@ -397,7 +397,8 @@ namespace EDM
                 String orderid = ds_ord_d.Tables["ord"].Rows[i]["order_id"].ToString();
                 Dictionary<String, String> stp = new Dictionary<String, String>();
                 Dictionary<String, String> edp = new Dictionary<String, String>();
-                Dictionary<String, String> tmp = new Dictionary<String, String>();
+                Dictionary<String, String> tmps = new Dictionary<String, String>();
+                Dictionary<String, String> tmpe = new Dictionary<String, String>();
                 
                 if (startid == endid) {
                     continue;
@@ -425,12 +426,60 @@ namespace EDM
                 edp.Add("dist", mdr["district"].ToString());
                 edp.Add("level", mdr["level"].ToString());
                 mdr.Dispose();
-                
-                // tianjia zhongjian lu
-                DataRow dr_road = dt_road.NewRow();
-                dr_road["st"] = stp["id"];
-                dr_road["ed"] = edp["id"];
-                dt_road.Rows.Add(dr_road);
+
+                if (stp["prov"] == edp["prov"])
+                {
+                    DataRow dr_road = dt_road.NewRow();
+                    dr_road["st"] = stp["id"];
+                    dr_road["ed"] = edp["id"];
+                    dt_road.Rows.Add(dr_road);
+                }
+
+                else
+                {
+                    mc = new MySqlCommand("select * from expressdata.place where province = '" + stp["prov"] + "' and level = 1;", ManageForm.mConn);
+                    mdr = mc.ExecuteReader();
+                    mdr.Read();
+                    tmps.Add("id", mdr["place_id"].ToString());
+                    tmps.Add("prov", mdr["province"].ToString());
+                    tmps.Add("city", mdr["city"].ToString());
+                    tmps.Add("dist", mdr["district"].ToString());
+                    tmps.Add("level", mdr["level"].ToString());
+                    mdr.Dispose();
+
+                    mc = new MySqlCommand("select * from expressdata.place where province = '" + edp["prov"] + "' and level = 1;", ManageForm.mConn);
+                    mdr = mc.ExecuteReader();
+                    mdr.Read();
+                    tmpe.Add("id", mdr["place_id"].ToString());
+                    tmpe.Add("prov", mdr["province"].ToString());
+                    tmpe.Add("city", mdr["city"].ToString());
+                    tmpe.Add("dist", mdr["district"].ToString());
+                    tmpe.Add("level", mdr["level"].ToString());
+                    mdr.Dispose();
+
+                    if (stp["id"] != tmps["id"])
+                    {
+                        DataRow dr_road = dt_road.NewRow();
+                        dr_road["st"] = stp["id"];
+                        dr_road["ed"] = tmps["id"];
+                        dt_road.Rows.Add(dr_road);
+                    }
+                    if (tmps["id"] != tmpe["id"])
+                    {
+                        DataRow dr_road = dt_road.NewRow();
+                        dr_road["st"] = tmps["id"];
+                        dr_road["ed"] = tmpe["id"];
+                        dt_road.Rows.Add(dr_road);
+                    }
+                    if (tmpe["id"] != edp["id"])
+                    {
+                        DataRow dr_road = dt_road.NewRow();
+                        dr_road["st"] = tmpe["id"];
+                        dr_road["ed"] = edp["id"];
+                        dt_road.Rows.Add(dr_road);
+                    }
+
+                }
 
                 mc = new MySqlCommand("select * from expressdata.goods where orderid = " + orderid + ";", ManageForm.mConn);
                 mdr = mc.ExecuteReader();
@@ -453,14 +502,25 @@ namespace EDM
             dt_goods_roads = dv.ToTable();
             //an zhongliang fenpei
 
+            
+            ArrayList ali = new ArrayList();
+            int tot_weight = 0;
             for (int i = 0; i < dt_goods_roads.Rows.Count; ++i)
             {
+                ali.Add(dt_goods_roads.Rows[i]["goods"]);
+                tot_weight += int.Parse(dt_goods_roads.Rows[i]["goods_w"].ToString());
+                if (i < dt_goods_roads.Rows.Count - 1 && dt_goods_roads.Rows[i]["st"].ToString() == dt_goods_roads.Rows[i + 1]["st"].ToString()
+                    && dt_goods_roads.Rows[i]["ed"].ToString() == dt_goods_roads.Rows[i + 1]["ed"].ToString())
+                {
+                    continue;
+                }
                 ArrayList al = new ArrayList();
                 MySqlCommand msc;
                 msc = new MySqlCommand("select employee_id from expressdata.employee where location = " + dt_goods_roads.Rows[i]["st"] + ";", ManageForm.mConn);
                 MySqlDataReader md = msc.ExecuteReader();
-                md.Read();
-                String person = md["employee_id"].ToString();
+               
+                String person = "1";
+
                 while (md.Read()) {
                     if (md["employee_id"] == "1")
                     {
@@ -484,7 +544,7 @@ namespace EDM
                     "`person_id`)" +
                     "VALUES" +
                     "(" +
-                    dt_goods_roads.Rows[i]["goods_w"] + "," +
+                    tot_weight + "," +
                     dt_goods_roads.Rows[i]["st"] + "," +
                     dt_goods_roads.Rows[i]["ed"] + "," +
                     "'汽车'," +
@@ -493,15 +553,18 @@ namespace EDM
                     person + ");select @@Identity";
                 msc = new MySqlCommand(transport_ins, ManageForm.mConn);
                 String transport_id = msc.ExecuteScalar().ToString();
-                
-                String trans_goods_ins = 
-                    "INSERT INTO `expressdata`.`transport_goods`(`transport_id`,`goods_id`)VALUES(" +
-                    transport_id + "," +
-                    dt_goods_roads.Rows[i]["goods"] + ");";
-                msc = new MySqlCommand(trans_goods_ins, ManageForm.mConn);
-                msc.ExecuteNonQuery();
-                msc.Dispose();
 
+                foreach (var item in ali)
+                {
+                    String trans_goods_ins =
+                        "INSERT INTO `expressdata`.`transport_goods`(`transport_id`,`goods_id`)VALUES(" +
+                        transport_id + "," +
+                        item.ToString() + ");";
+                    msc = new MySqlCommand(trans_goods_ins, ManageForm.mConn);
+                    msc.ExecuteNonQuery();
+                    msc.Dispose();
+                }
+               
                 
 
                 foreach (var item in al)
@@ -533,6 +596,9 @@ namespace EDM
                 msc = new MySqlCommand("CALL ADD_TRANSPORT(" + transport_id + ");", ManageForm.mConn);
                 msc.ExecuteNonQuery();
                 msc.Dispose();
+                ali.Clear();
+                tot_weight= 0;
+                al.Clear();
             }
             MessageBox.Show("配送任务分配成功！");
         }
