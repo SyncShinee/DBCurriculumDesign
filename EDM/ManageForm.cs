@@ -180,29 +180,78 @@ namespace EDM
                 mComd.Dispose();
 
                 mComd = new MySqlCommand(
-                "INSERT INTO `expressdata`.`employee`" +
-                "(`password`,`name`,`gender`,`age`,`phone`,`worktime`,`location`)" +
-                "VALUES('123456','管理员',1,30,'13070118279',0,1);", mConn);
+                    "INSERT INTO `expressdata`.`employee`" +
+                    "(`password`,`name`,`gender`,`age`,`phone`,`worktime`,`location`)" +
+                    "VALUES('123456','管理员',1,30,'13070118279',0,1);", mConn);
                 mComd.ExecuteNonQuery();
-                mComd.Dispose();
-            }
-            else
-            {
-                mRead.Dispose();
-                mComd.Dispose();
-            }
-
-            mComd = new MySqlCommand("select * from place", mConn);
-            mRead = mComd.ExecuteReader();
-            if (!mRead.HasRows)
-            {
-                mRead.Dispose();
                 mComd.Dispose();
 
                 mComd = new MySqlCommand(
-                "INSERT INTO `expressdata`.`place`" +
-                "(`province`,`city`,`district`,`level`)" +
-                "VALUES('北京市','省级','中转站',1);", mConn);
+                   "INSERT INTO `expressdata`.`place`" +
+                   "(`province`,`city`,`district`,`level`)" +
+                   "VALUES('北京市','省级','中转站',1);", mConn);
+                mComd.ExecuteNonQuery();
+                mComd.Dispose();
+
+                mComd = new MySqlCommand(
+                    "CREATE TRIGGER `expressdata`.`employee_BEFORE_DELETE` " +
+                    "BEFORE DELETE ON `employee` " +
+                    "FOR EACH ROW " +
+                    "BEGIN " +
+                        "UPDATE `transport` " +
+                        "SET `person_id` = 1 " +
+                        "WHERE `person_id` IN " +
+                            "(SELECT `employee_id` " +
+                             "FROM `employee_transport` " +
+                             "WHERE `charge` = 1 AND old.employee_id = `employee_transport`.`employee_id`); " +
+                        "DELETE " +
+                        "FROM `employee_transport` " +
+                        "WHERE old.employee_id = `employee_transport`.`employee_id`; " +
+                    "END", mConn);
+                mComd.ExecuteNonQuery();
+                mComd.Dispose();
+
+                mComd = new MySqlCommand(
+                    "CREATE PROCEDURE `ADD_TRANSPORT`(IN id INT) " +
+                    "BEGIN " +
+                    "UPDATE `order` " +
+                    "SET `order_count` = `order_count` + 1 " +
+                    "WHERE `order_id` IN " +
+                        "(SELECT dISTINCT `orderid` " +
+                         "FROM `goods` " +
+                         "WHERE `goods_id` IN " +
+                            "(SELECT `goods_id` " +
+                             "FROM `transport_goods` " +
+                             "WHERE `transport_id` = id)); " +
+                    "UPDATE `order` " +
+                    "SET `order_state` = 1 " +
+                    "WHERE `order_state` = 0 AND `order_id` IN " +
+                        "(SELECT dISTINCT `orderid` " +
+                         "FROM `goods` " +
+                         "WHERE `goods_id` IN " +
+                            "(SELECT `goods_id` " +
+                             "FROM `transport_goods` " +
+                             "WHERE `transport_id` = id)); " +
+                    "END", mConn);
+                mComd.ExecuteNonQuery();
+                mComd.Dispose();
+
+                mComd = new MySqlCommand(
+                    "CREATE PROCEDURE `FINISH_TRANSPORT`(IN id INT) " +
+                    "BEGIN " +
+	                    "UPDATE `order` " +
+	                    "SET `order_count` = `order_count` - 1 " +
+	                    "WHERE `order_id` IN " +
+		                    "(SELECT dISTINCT `orderid` " +
+                             "FROM `goods` " +
+                             "WHERE `goods_id` IN " +
+			                    "(SELECT `goods_id` " +
+                                 "FROM `transport_goods` " +
+			                     "WHERE `transport_id` = id)); " +
+	                    "UPDATE `order` " +
+                        "SET `order_state` = 2 " +
+                        "WHERE `order_count` = 0; " +
+                    "END", mConn);
                 mComd.ExecuteNonQuery();
                 mComd.Dispose();
             }
