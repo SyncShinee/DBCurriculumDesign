@@ -522,7 +522,7 @@ namespace EDM
                 String person = "1";
 
                 while (md.Read()) {
-                    if (md["employee_id"] == "1")
+                    if (md["employee_id"].ToString() == "1")
                     {
                         continue;
                     }

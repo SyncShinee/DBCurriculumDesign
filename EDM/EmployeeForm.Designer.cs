@@ -425,7 +425,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "快递信息管理系统";
+            this.Text = "“飞鸽”快递信息管理系统";
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.taskTab.ResumeLayout(false);

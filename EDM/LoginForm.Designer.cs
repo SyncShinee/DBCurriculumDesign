@@ -72,7 +72,7 @@
             this.loginTab.Controls.Add(this.empolyTab);
             this.loginTab.Controls.Add(this.registerTab);
             this.loginTab.Location = new System.Drawing.Point(0, 2);
-            this.loginTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loginTab.Margin = new System.Windows.Forms.Padding(2);
             this.loginTab.Name = "loginTab";
             this.loginTab.SelectedIndex = 0;
             this.loginTab.Size = new System.Drawing.Size(502, 353);
@@ -87,9 +87,9 @@
             this.userTab.Controls.Add(this.account1);
             this.userTab.Controls.Add(this.accountTextU);
             this.userTab.Location = new System.Drawing.Point(4, 22);
-            this.userTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userTab.Margin = new System.Windows.Forms.Padding(2);
             this.userTab.Name = "userTab";
-            this.userTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userTab.Padding = new System.Windows.Forms.Padding(2);
             this.userTab.Size = new System.Drawing.Size(494, 327);
             this.userTab.TabIndex = 0;
             this.userTab.Text = "用户登录";
@@ -97,7 +97,7 @@
             // loginBtn_User
             // 
             this.loginBtn_User.Location = new System.Drawing.Point(154, 197);
-            this.loginBtn_User.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loginBtn_User.Margin = new System.Windows.Forms.Padding(2);
             this.loginBtn_User.Name = "loginBtn_User";
             this.loginBtn_User.Size = new System.Drawing.Size(75, 31);
             this.loginBtn_User.TabIndex = 4;
@@ -108,7 +108,7 @@
             // passwordTextU
             // 
             this.passwordTextU.Location = new System.Drawing.Point(141, 131);
-            this.passwordTextU.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordTextU.Margin = new System.Windows.Forms.Padding(2);
             this.passwordTextU.Name = "passwordTextU";
             this.passwordTextU.PasswordChar = '*';
             this.passwordTextU.Size = new System.Drawing.Size(159, 21);
@@ -137,7 +137,7 @@
             // accountTextU
             // 
             this.accountTextU.Location = new System.Drawing.Point(141, 74);
-            this.accountTextU.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.accountTextU.Margin = new System.Windows.Forms.Padding(2);
             this.accountTextU.Name = "accountTextU";
             this.accountTextU.Size = new System.Drawing.Size(159, 21);
             this.accountTextU.TabIndex = 0;
@@ -150,9 +150,9 @@
             this.empolyTab.Controls.Add(this.account2);
             this.empolyTab.Controls.Add(this.accountTextE);
             this.empolyTab.Location = new System.Drawing.Point(4, 22);
-            this.empolyTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.empolyTab.Margin = new System.Windows.Forms.Padding(2);
             this.empolyTab.Name = "empolyTab";
-            this.empolyTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.empolyTab.Padding = new System.Windows.Forms.Padding(2);
             this.empolyTab.Size = new System.Drawing.Size(494, 327);
             this.empolyTab.TabIndex = 1;
             this.empolyTab.Text = "员工登陆";
@@ -161,7 +161,7 @@
             // loginBtn_Employ
             // 
             this.loginBtn_Employ.Location = new System.Drawing.Point(155, 197);
-            this.loginBtn_Employ.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loginBtn_Employ.Margin = new System.Windows.Forms.Padding(2);
             this.loginBtn_Employ.Name = "loginBtn_Employ";
             this.loginBtn_Employ.Size = new System.Drawing.Size(75, 31);
             this.loginBtn_Employ.TabIndex = 9;
@@ -172,7 +172,7 @@
             // passwordTextE
             // 
             this.passwordTextE.Location = new System.Drawing.Point(141, 131);
-            this.passwordTextE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordTextE.Margin = new System.Windows.Forms.Padding(2);
             this.passwordTextE.Name = "passwordTextE";
             this.passwordTextE.PasswordChar = '*';
             this.passwordTextE.Size = new System.Drawing.Size(159, 21);
@@ -201,7 +201,7 @@
             // accountTextE
             // 
             this.accountTextE.Location = new System.Drawing.Point(141, 74);
-            this.accountTextE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.accountTextE.Margin = new System.Windows.Forms.Padding(2);
             this.accountTextE.Name = "accountTextE";
             this.accountTextE.Size = new System.Drawing.Size(159, 21);
             this.accountTextE.TabIndex = 5;
@@ -227,7 +227,7 @@
             this.registerTab.Controls.Add(this.accountTextR);
             this.registerTab.Controls.Add(this.account3);
             this.registerTab.Location = new System.Drawing.Point(4, 22);
-            this.registerTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registerTab.Margin = new System.Windows.Forms.Padding(2);
             this.registerTab.Name = "registerTab";
             this.registerTab.Size = new System.Drawing.Size(494, 327);
             this.registerTab.TabIndex = 2;
@@ -237,7 +237,7 @@
             // registerButtton
             // 
             this.registerButtton.Location = new System.Drawing.Point(203, 223);
-            this.registerButtton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registerButtton.Margin = new System.Windows.Forms.Padding(2);
             this.registerButtton.Name = "registerButtton";
             this.registerButtton.Size = new System.Drawing.Size(71, 36);
             this.registerButtton.TabIndex = 17;
@@ -248,7 +248,7 @@
             // ageText
             // 
             this.ageText.Location = new System.Drawing.Point(325, 71);
-            this.ageText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ageText.Margin = new System.Windows.Forms.Padding(2);
             this.ageText.Name = "ageText";
             this.ageText.Size = new System.Drawing.Size(119, 21);
             this.ageText.TabIndex = 16;
@@ -266,7 +266,7 @@
             // emailText
             // 
             this.emailText.Location = new System.Drawing.Point(325, 153);
-            this.emailText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.emailText.Margin = new System.Windows.Forms.Padding(2);
             this.emailText.Name = "emailText";
             this.emailText.Size = new System.Drawing.Size(119, 21);
             this.emailText.TabIndex = 14;
@@ -284,7 +284,7 @@
             // phoneText
             // 
             this.phoneText.Location = new System.Drawing.Point(109, 151);
-            this.phoneText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.phoneText.Margin = new System.Windows.Forms.Padding(2);
             this.phoneText.Name = "phoneText";
             this.phoneText.Size = new System.Drawing.Size(119, 21);
             this.phoneText.TabIndex = 12;
@@ -313,7 +313,7 @@
             // 
             this.maleButton.AutoSize = true;
             this.maleButton.Location = new System.Drawing.Point(377, 113);
-            this.maleButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maleButton.Margin = new System.Windows.Forms.Padding(2);
             this.maleButton.Name = "maleButton";
             this.maleButton.Size = new System.Drawing.Size(35, 16);
             this.maleButton.TabIndex = 9;
@@ -325,7 +325,7 @@
             this.femaleButton.AutoSize = true;
             this.femaleButton.Checked = true;
             this.femaleButton.Location = new System.Drawing.Point(329, 113);
-            this.femaleButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.femaleButton.Margin = new System.Windows.Forms.Padding(2);
             this.femaleButton.Name = "femaleButton";
             this.femaleButton.Size = new System.Drawing.Size(35, 16);
             this.femaleButton.TabIndex = 8;
@@ -336,7 +336,7 @@
             // nameText
             // 
             this.nameText.Location = new System.Drawing.Point(325, 30);
-            this.nameText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nameText.Margin = new System.Windows.Forms.Padding(2);
             this.nameText.Name = "nameText";
             this.nameText.Size = new System.Drawing.Size(119, 21);
             this.nameText.TabIndex = 7;
@@ -354,7 +354,7 @@
             // confirmText
             // 
             this.confirmText.Location = new System.Drawing.Point(109, 109);
-            this.confirmText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.confirmText.Margin = new System.Windows.Forms.Padding(2);
             this.confirmText.Name = "confirmText";
             this.confirmText.PasswordChar = '*';
             this.confirmText.Size = new System.Drawing.Size(119, 21);
@@ -373,7 +373,7 @@
             // passwordTextR
             // 
             this.passwordTextR.Location = new System.Drawing.Point(109, 71);
-            this.passwordTextR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordTextR.Margin = new System.Windows.Forms.Padding(2);
             this.passwordTextR.Name = "passwordTextR";
             this.passwordTextR.PasswordChar = '*';
             this.passwordTextR.Size = new System.Drawing.Size(119, 21);
@@ -392,7 +392,7 @@
             // accountTextR
             // 
             this.accountTextR.Location = new System.Drawing.Point(109, 28);
-            this.accountTextR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.accountTextR.Margin = new System.Windows.Forms.Padding(2);
             this.accountTextR.Name = "accountTextR";
             this.accountTextR.Size = new System.Drawing.Size(119, 21);
             this.accountTextR.TabIndex = 1;
@@ -413,10 +413,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 355);
             this.Controls.Add(this.loginTab);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "北航易送";
+            this.Text = "“飞鸽”快递信息管理系统";
             this.loginTab.ResumeLayout(false);
             this.userTab.ResumeLayout(false);
             this.userTab.PerformLayout();

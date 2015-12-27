@@ -71,7 +71,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(-2, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(718, 399);
@@ -83,7 +83,7 @@
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(710, 373);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "我的订单";
@@ -94,7 +94,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(9, 32);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(683, 313);
@@ -121,7 +121,7 @@
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(710, 373);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "提交订单";
@@ -215,7 +215,7 @@
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(710, 373);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "个人信息";
@@ -225,7 +225,7 @@
             // 
             this.maleButton.AutoSize = true;
             this.maleButton.Location = new System.Drawing.Point(233, 145);
-            this.maleButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maleButton.Margin = new System.Windows.Forms.Padding(2);
             this.maleButton.Name = "maleButton";
             this.maleButton.Size = new System.Drawing.Size(35, 16);
             this.maleButton.TabIndex = 32;
@@ -237,7 +237,7 @@
             // 
             this.femaleButton.AutoSize = true;
             this.femaleButton.Location = new System.Drawing.Point(183, 145);
-            this.femaleButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.femaleButton.Margin = new System.Windows.Forms.Padding(2);
             this.femaleButton.Name = "femaleButton";
             this.femaleButton.Size = new System.Drawing.Size(35, 16);
             this.femaleButton.TabIndex = 31;
@@ -358,7 +358,7 @@
             this.Controls.Add(this.welcome);
             this.Controls.Add(this.tabControl1);
             this.Name = "CustomerForm";
-            this.Text = "快递信息管理系统";
+            this.Text = "“飞鸽”快递信息管理系统";
             this.Load += new System.EventHandler(this.CustomerForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
