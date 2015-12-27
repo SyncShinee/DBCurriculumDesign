@@ -12,5 +12,5 @@ BEGIN
             
 	UPDATE `order` 
     SET `order_state` = 2 
-    WHERE `order_count` = 0;
+    WHERE `order_count` = 0 AND `order_state` = 1;
 END

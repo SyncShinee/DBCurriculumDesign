@@ -242,7 +242,7 @@ namespace EDM
 	                    "UPDATE `order` " +
 	                    "SET `order_count` = `order_count` - 1 " +
 	                    "WHERE `order_id` IN " +
-		                    "(SELECT dISTINCT `orderid` " +
+		                    "(SELECT DISTINCT `orderid` " +
                              "FROM `goods` " +
                              "WHERE `goods_id` IN " +
 			                    "(SELECT `goods_id` " +
@@ -250,7 +250,7 @@ namespace EDM
 			                     "WHERE `transport_id` = id)); " +
 	                    "UPDATE `order` " +
                         "SET `order_state` = 2 " +
-                        "WHERE `order_count` = 0; " +
+                        "WHERE `order_count` = 0 AND `order_state` = 1; " +
                     "END", mConn);
                 mComd.ExecuteNonQuery();
                 mComd.Dispose();
