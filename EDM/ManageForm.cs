@@ -31,15 +31,11 @@ namespace EDM
         {
             this.Hide();
 
-            mConn = new MySqlConnection("Host = localhost;" + "Database = expressdata;" + "Username = root;" + "Password = 123456");
+            mConn = new MySqlConnection("Host = localhost;" + "Username = root;" + "Password = 123456");
             mConn.Open();
             if (mConn.State.ToString().Equals("Open"))
-            {
-                DataTable dt = mConn.GetSchema("Tables");
-                if (dt.Rows.Count == 0)
-                {
-                    initDatabase();
-                }
+            { 
+                initDatabase();
             }
             else
             {
@@ -71,8 +67,16 @@ namespace EDM
 
         private void initDatabase()
         {
+            mComd = new MySqlCommand("CREATE SCHEMA IF NOT EXISTS expressdata;", mConn);
+            mComd.ExecuteNonQuery();
+            mComd.Dispose();
+            mConn.Dispose();
+
+            mConn = new MySqlConnection("Host = localhost;" + "Database = expressdata;" + "Username = root;" + "Password = 123456");
+            mConn.Open();
+
             mComd = new MySqlCommand(
-                "CREATE TABLE `expressdata`.`user` (" +
+                "CREATE TABLE IF NOT EXISTS `expressdata`.`user` (" +
                 "`user_id` INT NOT NULL AUTO_INCREMENT," +
                 "`user_account` VARCHAR(45) NOT NULL," +
                 "`user_password` VARCHAR(45) NOT NULL," +
@@ -87,7 +91,7 @@ namespace EDM
             mComd.Dispose();
 
             mComd = new MySqlCommand(
-                "CREATE TABLE `expressdata`.`order` (" +
+                "CREATE TABLE IF NOT EXISTS `expressdata`.`order` (" +
                 "`order_id` INT NOT NULL AUTO_INCREMENT," +
                 "`userid` INT NOT NULL," +
                 "`startplace` INT NOT NULL," +
@@ -100,7 +104,7 @@ namespace EDM
             mComd.Dispose();
 
             mComd = new MySqlCommand(
-                "CREATE TABLE `expressdata`.`goods` (" +
+                "CREATE TABLE IF NOT EXISTS `expressdata`.`goods` (" +
                 "`goods_id` INT NOT NULL AUTO_INCREMENT," +
                 "`weight` INT NOT NULL," +
                 "`type` VARCHAR(45) NOT NULL," +
@@ -111,7 +115,7 @@ namespace EDM
             mComd.Dispose();
 
             mComd = new MySqlCommand(
-                "CREATE TABLE `expressdata`.`transport` (" +
+                "CREATE TABLE IF NOT EXISTS `expressdata`.`transport` (" +
                 "`transport_id` INT NOT NULL AUTO_INCREMENT," +
                 "`load_weight` INT NOT NULL," +
                 "`startplace` INT NOT NULL," +
@@ -125,7 +129,7 @@ namespace EDM
             mComd.Dispose();
 
             mComd = new MySqlCommand(
-                "CREATE TABLE `expressdata`.`employee` (" +
+                "CREATE TABLE IF NOT EXISTS `expressdata`.`employee` (" +
                 "`employee_id` INT NOT NULL AUTO_INCREMENT," +
                 "`password` VARCHAR(45) NOT NULL," +
                 "`name` VARCHAR(45) NOT NULL," +
@@ -139,7 +143,7 @@ namespace EDM
             mComd.Dispose();
 
             mComd = new MySqlCommand(
-                "CREATE TABLE `expressdata`.`place` (" +
+                "CREATE TABLE IF NOT EXISTS `expressdata`.`place` (" +
                 "`place_id` INT NOT NULL AUTO_INCREMENT," +
                 "`province` VARCHAR(45) NOT NULL," +
                 "`city` VARCHAR(45) NOT NULL," +
@@ -150,7 +154,7 @@ namespace EDM
             mComd.Dispose();
 
             mComd = new MySqlCommand(
-                "CREATE TABLE `expressdata`.`transport_goods` (" +
+                "CREATE TABLE IF NOT EXISTS `expressdata`.`transport_goods` (" +
                 "`transport_goods_id` INT NOT NULL AUTO_INCREMENT," +
                 "`transport_id` INT NOT NULL," +
                 "`goods_id` INT NOT NULL," +
@@ -159,7 +163,7 @@ namespace EDM
             mComd.Dispose();
 
             mComd = new MySqlCommand(
-                "CREATE TABLE `expressdata`.`employee_transport` (" +
+                "CREATE TABLE IF NOT EXISTS `expressdata`.`employee_transport` (" +
                 "`employee_transport_id` INT NOT NULL AUTO_INCREMENT," +
                 "`employee_id` INT NOT NULL," +
                 "`transport_id` INT NOT NULL," +
@@ -178,7 +182,7 @@ namespace EDM
             mComd = new MySqlCommand(
                 "INSERT INTO `expressdata`.`place`" +
                 "(`province`,`city`,`district`,`level`)" +
-                "VALUES('北京市''省级','中转站',1);", mConn);
+                "VALUES('北京市','省级','中转站',1);", mConn);
             mComd.ExecuteNonQuery();
             mComd.Dispose();
         }
