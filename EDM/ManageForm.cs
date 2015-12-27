@@ -92,8 +92,9 @@ namespace EDM
                 "`userid` INT NOT NULL," +
                 "`startplace` INT NOT NULL," +
                 "`endplace` INT NOT NULL," +
-                "`order_state` INT ZEROFILL NOT NULL," +
+                "`order_state` INT NOT NULL," +
                 "`order_time` DATETIME NOT NULL," +
+                "`order_count` INT NOT NULL," +
                 "PRIMARY KEY (`order_id`));", mConn);
             mComd.ExecuteNonQuery();
             mComd.Dispose();
@@ -113,7 +114,7 @@ namespace EDM
                 "CREATE TABLE `expressdata`.`transport` (" +
                 "`transport_id` INT NOT NULL AUTO_INCREMENT," +
                 "`load_weight` INT NOT NULL," +
-                "`stratplace` INT NOT NULL," +
+                "`startplace` INT NOT NULL," +
                 "`endplace` INT NOT NULL," +
                 "`vehicle` VARCHAR(45) NOT NULL," +
                 "`starttime` DATETIME NOT NULL," +
@@ -139,7 +140,7 @@ namespace EDM
 
             mComd = new MySqlCommand(
                 "CREATE TABLE `expressdata`.`place` (" +
-                "`place_id` NOT NULL AUTO_INCREMENT," +
+                "`place_id` INT NOT NULL AUTO_INCREMENT," +
                 "`province` VARCHAR(45) NOT NULL," +
                 "`city` VARCHAR(45) NOT NULL," +
                 "`district` VARCHAR(45) NOT NULL," +
@@ -162,7 +163,7 @@ namespace EDM
                 "`employee_transport_id` INT NOT NULL AUTO_INCREMENT," +
                 "`employee_id` INT NOT NULL," +
                 "`transport_id` INT NOT NULL," +
-                "`charge` TINYINT(1) ZEROFILL NOT NULL," +
+                "`charge` TINYINT(1) NOT NULL," +
                 "PRIMARY KEY (`employee_transport_id`));", mConn);
             mComd.ExecuteNonQuery();
             mComd.Dispose();
