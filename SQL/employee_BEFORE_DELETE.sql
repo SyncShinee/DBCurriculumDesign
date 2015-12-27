@@ -9,7 +9,7 @@ BEGIN
 		 FROM `employee_transport`
 		 WHERE `charge` = 1 AND old.employee_id = `employee_transport`.`employee_id`);
     
-    DELETE 
-    FROM `employee_transport` 
+    UPDATE `employee_transport` 
+    SET `employee_transport`.`employee_id` = 1
     WHERE old.employee_id = `employee_transport`.`employee_id`;
 END
