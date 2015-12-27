@@ -143,7 +143,15 @@ namespace EDM
                 DataRow dr = dt.NewRow();
                 dr["员工号"] = ds.Tables["emp"].Rows[i]["employee_id"];
                 dr["姓名"] = ds.Tables["emp"].Rows[i]["name"];
-                dr["性别"] = ds.Tables["emp"].Rows[i]["gender"];
+                dr["性别"] = ds.Tables["emp"].Rows[i]["gender"].ToString();
+                if (dr["性别"].ToString() == "True")
+                {
+                    dr["性别"] = "男";
+                }
+                else
+                {
+                    dr["性别"] = "女";
+                }
                 dr["年龄"] = ds.Tables["emp"].Rows[i]["age"];
                 dr["联系电话"] = ds.Tables["emp"].Rows[i]["phone"];
                 dr["工作时长"] = ds.Tables["emp"].Rows[i]["worktime"];
@@ -171,7 +179,7 @@ namespace EDM
             dt_todo.Columns.Add("运输工具");
             dt_todo.Columns.Add("出发时间");
             dt_todo.Columns.Add("到达时间");
-            dt_todo.Columns.Add("负责人员工编号");
+            dt_todo.Columns.Add("负责人");
             dt_finish.Columns.Add("配送任务流水号");
             dt_finish.Columns.Add("配送货物总重");
             dt_finish.Columns.Add("出发地点");
@@ -179,7 +187,7 @@ namespace EDM
             dt_finish.Columns.Add("运输工具");
             dt_finish.Columns.Add("出发时间");
             dt_finish.Columns.Add("到达时间");
-            dt_finish.Columns.Add("负责人员工编号");
+            dt_finish.Columns.Add("负责人");
             MySqlDataReader mReader = mCmd.ExecuteReader();
             while (mReader.Read())
             {
@@ -198,12 +206,21 @@ namespace EDM
                     DataRow dar = dt_todo.NewRow();
                     dar["配送任务流水号"] = mdr["transport_id"];
                     dar["配送货物总重"] = mdr["load_weight"];
-                    dar["出发地点"] = mdr["startplace"];
-                    dar["目的地点"] = mdr["endplace"];
+                    dar["出发地点"] = mdr["startplace"].ToString();
+                    dar["目的地点"] = mdr["endplace"].ToString();
                     dar["运输工具"] = mdr["vehicle"];
-                    dar["出发时间"] = mdr["starttime"];
-                    dar["到达时间"] = mdr["endtime"];
-                    dar["负责人员工编号"] = mdr["person_id"];
+                    dar["出发时间"] = mdr["starttime"].ToString();
+                    dar["到达时间"] = mdr["endtime"].ToString();
+                    dar["负责人"] = mdr["person_id"].ToString();
+
+                    if (dar["出发时间"].ToString() == "1000/1/1 0:00:00")
+                    {
+                        dar["出发时间"] = "未出发";
+                    }
+                    if (dar["到达时间"].ToString() == "1000/1/1 0:00:00")
+                    {
+                        dar["到达时间"] = "未送达";
+                    }
                     dt_todo.Rows.Add(dar);
                 }
                 else
@@ -211,15 +228,63 @@ namespace EDM
                     DataRow dar = dt_finish.NewRow();
                     dar["配送任务流水号"] = mdr["transport_id"];
                     dar["配送货物总重"] = mdr["load_weight"];
-                    dar["出发地点"] = mdr["startplace"];
-                    dar["目的地点"] = mdr["endplace"];
+                    dar["出发地点"] = mdr["startplace"].ToString();
+                    dar["目的地点"] = mdr["endplace"].ToString();
                     dar["运输工具"] = mdr["vehicle"];
-                    dar["出发时间"] = mdr["starttime"];
-                    dar["到达时间"] = mdr["endtime"];
-                    dar["负责人员工编号"] = mdr["person_id"];
+                    dar["出发时间"] = mdr["starttime"].ToString();
+                    dar["到达时间"] = mdr["endtime"].ToString();
+                    dar["负责人"] = mdr["person_id"].ToString();
+                    if (dar["出发时间"].ToString() == "1000/1/1 0:00:00")
+                    {
+                        dar["出发时间"] = "未出发";
+                    }
+                    if (dar["到达时间"].ToString() == "1000/1/1 0:00:00")
+                    {
+                        dar["到达时间"] = "未送达";
+                    }
                     dt_finish.Rows.Add(dar);
                 }
                 mdr.Dispose();
+            }
+            for (int i = 0; i < dt_todo.Rows.Count; ++i)
+            {
+                MySqlCommand msc = new MySqlCommand("select * from expressdata.place where place_id = " + dt_todo.Rows[i]["出发地点"] + ";", ManageForm.mConn);
+                MySqlDataReader msdr = msc.ExecuteReader();
+                msdr.Read();
+                dt_todo.Rows[i]["出发地点"] = msdr["province"].ToString() + msdr["city"].ToString() + msdr["district"].ToString();
+                msdr.Dispose();
+
+                msc = new MySqlCommand("select * from expressdata.place where place_id = " + dt_todo.Rows[i]["目的地点"] + ";", ManageForm.mConn);
+                msdr = msc.ExecuteReader();
+                msdr.Read();
+                dt_todo.Rows[i]["目的地点"] = msdr["province"].ToString() + msdr["city"].ToString() + msdr["district"].ToString();
+                msdr.Dispose();
+
+                msc = new MySqlCommand("select name from expressdata.employee where employee_id = " + dt_todo.Rows[i]["负责人"] + ";", ManageForm.mConn);
+                msdr = msc.ExecuteReader();
+                msdr.Read();
+                dt_todo.Rows[i]["负责人"] = msdr["name"];
+                msdr.Dispose();
+            }
+            for (int i = 0; i < dt_finish.Rows.Count; ++i)
+            {
+                MySqlCommand msc = new MySqlCommand("select * from expressdata.place where place_id = " + dt_finish.Rows[i]["出发地点"] + ";", ManageForm.mConn);
+                MySqlDataReader msdr = msc.ExecuteReader();
+                msdr.Read();
+                dt_finish.Rows[i]["出发地点"] = msdr["province"].ToString() + msdr["city"].ToString() + msdr["district"].ToString();
+                msdr.Dispose();
+
+                msc = new MySqlCommand("select * from expressdata.place where place_id = " + dt_finish.Rows[i]["目的地点"] + ";", ManageForm.mConn);
+                msdr = msc.ExecuteReader();
+                msdr.Read();
+                dt_finish.Rows[i]["目的地点"] = msdr["province"].ToString() + msdr["city"].ToString() + msdr["district"].ToString();
+                msdr.Dispose();
+
+                msc = new MySqlCommand("select name from expressdata.employee where employee_id = " + dt_finish.Rows[i]["负责人"] + ";", ManageForm.mConn);
+                msdr = msc.ExecuteReader();
+                msdr.Read();
+                dt_finish.Rows[i]["负责人"] = msdr["name"];
+                msdr.Dispose();
             }
             dataGridViewToDo.DataSource = dt_todo;
             dataGridViewFinish.DataSource = dt_finish;
@@ -385,7 +450,7 @@ namespace EDM
                 msc.ExecuteNonQuery();
                 msc.Dispose();
 
-                msc = new MySqlCommand("CALL ADD_TRANSPORT(" + transport_id + "(;", ManageForm.mConn);
+                msc = new MySqlCommand("CALL ADD_TRANSPORT(" + transport_id + ");", ManageForm.mConn);
                 msc.ExecuteNonQuery();
                 msc.Dispose();
             }
@@ -399,9 +464,9 @@ namespace EDM
             String transendtime = dataGridViewToDo.CurrentRow.Cells[6].Value.ToString();
             String charger = dataGridViewToDo.CurrentRow.Cells[7].Value.ToString();
             //MessageBox.Show(transid + transstarttime + transendtime + charger);
-            if (transstarttime == "1000/1/1 0:00:00")
+            if (transstarttime == "未出发")
             {
-                if (charger == ManageForm.userid)
+                if (charger == ManageForm.username)
                 {
                     StartTransForm stf = new StartTransForm(transid);
                     stf.ShowDialog();
@@ -411,9 +476,9 @@ namespace EDM
                     MessageBox.Show("您不是该项配送任务的负责人，请等待负责人修改任务状态！");
                 }
             }
-            else if (transendtime == "1000/1/1 0:00:00")
+            else if (transendtime == "未送达")
             {
-                if (charger == ManageForm.userid)
+                if (charger == ManageForm.username)
                 {
                     EndTransForm etf = new EndTransForm(transid);
                     etf.ShowDialog();
@@ -423,6 +488,14 @@ namespace EDM
                     MessageBox.Show("您不是该项配送任务的负责人，请等待负责人修改任务状态！");
                 }
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            String empid = dataGridViewEmployee.CurrentRow.Cells[0].Value.ToString();
+            String sql = "";
+
+            MySqlCommand mc = new MySqlCommand(sql, ManageForm.mConn);
         }
 
     }

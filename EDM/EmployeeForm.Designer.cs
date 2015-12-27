@@ -57,6 +57,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.welcome = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.taskTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).BeginInit();
@@ -317,6 +318,7 @@
             // 
             // adminTab
             // 
+            this.adminTab.Controls.Add(this.button7);
             this.adminTab.Controls.Add(this.dataGridViewEmployee);
             this.adminTab.Controls.Add(this.button6);
             this.adminTab.Controls.Add(this.button5);
@@ -383,6 +385,16 @@
             this.welcome.TabIndex = 2;
             this.welcome.Text = "欢迎，用户";
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(381, 16);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(93, 33);
+            this.button7.TabIndex = 4;
+            this.button7.Text = "删除该员工";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -441,5 +453,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewOrder;
         private System.Windows.Forms.DataGridView dataGridViewEmployee;
+        private System.Windows.Forms.Button button7;
     }
 }

@@ -40,6 +40,14 @@ namespace EDM
                 dr["送达时间"] = dt.Rows[i]["endTime"];
                 dr["负责人"] = dt.Rows[i]["charger"];
                 dr["负责人电话"] = dt.Rows[i]["chargePhone"];
+                if (dr["出发时间"].ToString() == "1000/1/1 0:00:00")
+                {
+                    dr["出发时间"] = "未出发";
+                }
+                if (dr["送达时间"].ToString() == "1000/1/1 0:00:00")
+                {
+                    dr["送达时间"] = "未送达";
+                }
                 show_table.Rows.Add(dr);
             }
             dataGridView1.DataSource = show_table;

@@ -124,8 +124,8 @@ namespace EDM
                 mdr.Read();
                 transList.Rows[i]["startAddrid"] = mdr["startplace"];
                 transList.Rows[i]["endAddrid"] = mdr["endplace"];
-                transList.Rows[i]["startTime"] = mdr["starttime"];
-                transList.Rows[i]["endTime"] = mdr["endtime"];
+                transList.Rows[i]["startTime"] = mdr["starttime"].ToString();
+                transList.Rows[i]["endTime"] = mdr["endtime"].ToString();
                 transList.Rows[i]["chargerid"] = mdr["person_id"];
                 mdr.Dispose();
             }
