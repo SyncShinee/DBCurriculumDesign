@@ -12,7 +12,7 @@ BEGIN
              
 	UPDATE `order` 
     SET `order_state` = 1 
-    WHERE `order_state` = 0 AND `order_count` IN 
+    WHERE `order_state` = 0 AND `order_id` IN 
 		(SELECT dISTINCT `orderid` 
          FROM `goods` 
          WHERE `goods_id` IN
