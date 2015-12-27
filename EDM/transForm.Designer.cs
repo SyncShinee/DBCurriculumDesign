@@ -53,15 +53,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(655, 248);
             this.dataGridView1.TabIndex = 1;
             // 
-            // transForm
+            // TransForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 316);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
-            this.Name = "transForm";
-            this.Text = "transForm";
+            this.Name = "TransForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "查询订单详情";
             this.Load += new System.EventHandler(this.transForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

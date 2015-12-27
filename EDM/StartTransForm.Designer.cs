@@ -72,7 +72,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "StartTransForm";
-            this.Text = "StartTransForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "开始进行配送";
             this.ResumeLayout(false);
             this.PerformLayout();
 

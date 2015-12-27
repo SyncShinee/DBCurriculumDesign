@@ -70,7 +70,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "EndTransForm";
-            this.Text = "EndTransForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "完成配送任务";
             this.ResumeLayout(false);
             this.PerformLayout();
 
